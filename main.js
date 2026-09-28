@@ -92,10 +92,14 @@
     sync();
     form.addEventListener('submit', function (e) {
       e.preventDefault();
+      if (send.disabled) return;
+      send.disabled = true; // no double submits while sending
       msg.textContent = dict['f.sending'];
+      msg.insertAdjacentHTML('beforeend', '<span class="dots" aria-hidden="true"><i></i><i></i><i></i></span>');
       fetch(form.action, { method: 'POST', body: new FormData(form), headers: { Accept: 'application/json' } })
-        .then(function (r) { if (!r.ok) throw 0; form.reset(); sync(); msg.textContent = dict['f.ok']; })
-        .catch(function () { msg.textContent = dict['f.err']; });
+        .then(function (r) { if (!r.ok) throw 0; form.reset(); msg.textContent = dict['f.ok']; })
+        .catch(function () { msg.textContent = dict['f.err']; })
+        .then(sync);
     });
   }
 })();

@@ -110,7 +110,7 @@ var I18N = {
     'f.name': 'お名前（必須）', 'f.company': '会社名', 'f.email': 'メールアドレス（必須）', 'f.topic': 'ご相談内容', 'f.msg': 'メッセージ（必須）',
     'f.topics': '<option>Munemo について</option><option>AI導入・ルール策定</option><option>AIプロダクト開発</option><option>オフショア開発</option><option>その他</option>',
     'f.send': '送信する',
-    'f.sending': '送信しています…',
+    'f.sending': '送信しています',
     'f.ok': '送信しました。1営業日以内に担当者からご連絡します。',
     'f.err': '送信できませんでした。お手数ですが、メールでご連絡ください。',
     'ft.partner': 'パートナー：有限会社アクシリア（日本）'
@@ -225,7 +225,7 @@ var I18N = {
     'f.name': 'Name (required)', 'f.company': 'Company', 'f.email': 'Email (required)', 'f.topic': 'Topic', 'f.msg': 'Message (required)',
     'f.topics': '<option>Munemo</option><option>AI adoption and policy</option><option>AI product development</option><option>Offshore development</option><option>Other</option>',
     'f.send': 'Send message',
-    'f.sending': 'Sending…',
+    'f.sending': 'Sending',
     'f.ok': 'Message sent. We will reply within one business day.',
     'f.err': 'The message could not be sent. Please email us instead.',
     'ft.partner': 'Partner: Axirria Co., Ltd. (Japan)'
