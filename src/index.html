@@ -14,15 +14,17 @@
 <header>
   <div class="wrap nav">
     <a class="logo" href="#top" aria-label="Axirria Digital Vietnam"><img class="mark" src="{{base}}logo-mark.svg" width="44" height="44" alt=""><span class="nm"><span class="wm" aria-hidden="true">ax<i>ı<b class="h"></b></i>rr<i>ı<b class="f"></b></i>a</span><span class="r">digital vietnam</span></span></a>
-    <ul class="menu">
+    <ul class="menu" id="siteMenu">
       <li><a href="#services" data-i18n="nav.services"></a></li>
       <li><a href="#munemo" data-i18n="nav.munemo"></a></li>
       <li><a href="#offshore" data-i18n="nav.offshore"></a></li>
       <li><a href="#cases" data-i18n="nav.cases"></a></li>
       <li><a href="#company" data-i18n="nav.company"></a></li>
       <li><a href="#contact" data-i18n="nav.contact"></a></li>
+      <li class="menu-lang"><div class="lang">{{langSwitch}}</div></li>
     </ul>
     <nav class="lang" aria-label="Language">{{langSwitch}}</nav>
+    <button class="menu-btn" type="button" aria-expanded="false" aria-controls="siteMenu" data-i18n-label="nav.menu"><span></span></button>
   </div>
 </header>
 

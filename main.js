@@ -4,6 +4,22 @@
   var dict = I18N[document.documentElement.lang] || I18N.ja;
   function $(id) { return document.getElementById(id); }
 
+  // Mobile menu
+  var menuBtn = document.querySelector('.menu-btn');
+  if (menuBtn) {
+    var nav = menuBtn.parentNode;
+    var setOpen = function (open) {
+      nav.classList.toggle('open', open);
+      menuBtn.setAttribute('aria-expanded', open);
+    };
+    menuBtn.addEventListener('click', function () { setOpen(!nav.classList.contains('open')); });
+    nav.querySelectorAll('.menu a').forEach(function (a) { a.addEventListener('click', function () { setOpen(false); }); });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && nav.classList.contains('open')) { setOpen(false); menuBtn.focus(); }
+    });
+    document.addEventListener('click', function (e) { if (!nav.contains(e.target)) setOpen(false); });
+  }
+
   // Munemo demo
   var sumBtn = $('sumBtn');
   if (sumBtn) {
