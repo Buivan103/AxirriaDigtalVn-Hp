@@ -40,7 +40,7 @@ var I18N = {
 
     'mu.title': 'Munemo：長い文章を、要約と次のアクションに',
     'mu.lead': '商談メモ、議事録、問い合わせ。まとまりのない長い文章を貼り付けるだけで、<span class="nb">要点を数行にまとめ、</span>次にやるべきことを提案します。',
-    'mu.l': '<li>長文をそのまま貼り付けるだけ</li><li>要点を数行に要約</li><li>次のアクションを具体的に提案</li><li>社内データを学習に使わない設計</li><li>翻訳もまとめて。<span class="nb">ベトナム語の文章を、</span><span class="nb">日本語や英語で要約</span></li>',
+    'mu.l': '<li>長文をそのまま貼り付けるだけ</li><li>要点を数行に要約</li><li>次のアクションを具体的に提案</li><li>Slack・Jira・メールへそのまま連携</li><li>社内データを学習に使わない設計</li><li>翻訳もまとめて。<span class="nb">ベトナム語の文章を、</span><span class="nb">日本語や英語で要約</span></li>',
     'mu.cta': 'デモを依頼する',
     'mu.hint': '長文を貼り付けて要約',
     'mu.thinking': '要約して、次のアクションを考えています…',
@@ -48,10 +48,15 @@ var I18N = {
     'mu.text': '本日A社の山田部長と打ち合わせ。現在、問い合わせはExcelで管理していて、担当者ごとにファイルが分かれているため過去の対応履歴を探すのに1件あたり10分ほどかかっているとのこと。問い合わせは月に約1,200件、繁忙期はその倍になる。AIによる自動要約には興味があるが、情報漏えいが心配で、社内のAI利用ルールもまだ無い。予算は来期に確保予定で、稟議は来月の役員会にかける。いきなり全社ではなく、まず1部署で小さく試したいとの希望。次回は情報システム部の佐々木さんも同席予定。デモは実データではなくサンプルデータで見たいとのこと。競合としてB社からも提案を受けている。',
     'mu.len': '貼り付けたテキスト（約300文字）',
     'mu.inputLabel': '要約する文章',
+    'mu.slack': 'Slackで佐々木さんに連絡',
+    'mu.slackDone': 'Slackで佐々木さんに連絡しました',
+    'mu.jira': 'Jiraチケットを作成',
+    'mu.jiraDone': 'Jiraチケットを作成しました（SALES-128）',
+    'mu.mail': '山田部長にメールを送信',
+    'mu.mailDone': '山田部長にメールを送信しました',
+    'mu.note': 'デモのため、実際には送信されません。',
     'mu.run': '要約してみる',
     'mu.tryHint': 'サンプルの商談メモが入っています。<br>ボタンを押して試してみてください',
-    'mu.again': 'もう一度試す',
-    'mu.ph': 'もう一度試すには、下のボタンを押してください',
     'mu.sum': '<h3>要約</h3><ul><li>問い合わせはExcel管理で、履歴検索に1件10分かかっている</li><li>月約1,200件（繁忙期は倍）。AI要約に関心あり</li><li>情報漏えいが懸念。社内のAI利用ルールは未整備</li><li>来月の役員会で稟議。まず1部署でトライアルしたい</li></ul><h3 class="next">次のアクション</h3><ol><li>サンプルデータでデモを準備（情報システム部 佐々木さん同席）</li><li>AI利用ルールのたたき台を用意する</li><li>1部署トライアルの見積りを役員会の前に提出</li><li>B社との比較ポイントを整理する</li></ol>',
 
     'off.title': 'エンジニア0.5人とAIエージェント1体で、1チーム',
@@ -81,7 +86,7 @@ var I18N = {
     'pt3.t': 'AI導入支援', 'pt3.d': 'Munemo Assistant など、業務に沿ったAIを提供。',
 
     'co.title': '会社概要',
-    'co.info': '<dt>会社名</dt><dd>AXIRRIA DIGITAL VIETNAM COMPANY LIMITED</dd><dt>設立</dt><dd>2024年4月</dd><dt>代表者</dt><dd>代表取締役 <span class="nb">Văn Nhật Duy</span> <span class="nb">（ヴァン・ニャット・ズイ）</span></dd><dt>資本金</dt><dd>100,000,000 VND</dd><dt>所在地</dt><dd>ベトナム タインホア省 サムソン坊<br><small class="nb">Phường Sầm Sơn, Tỉnh Thanh Hóa</small></dd><dt>事業内容</dt><dd>AIプロダクトの開発・販売、AI導入コンサルティング、オフショア開発</dd>',
+    'co.info': '<dt>会社名</dt><dd>AXIRRIA DIGITAL VIETNAM COMPANY LIMITED</dd><dt>設立</dt><dd>2026年9月</dd><dt>代表者</dt><dd>代表取締役 <span class="nb">Văn Nhật Duy</span> <span class="nb">（ヴァン・ニャット・ズイ）</span></dd><dt>資本金</dt><dd>100,000,000 VND</dd><dt>所在地</dt><dd>ベトナム タインホア省 サムソン坊<br><small class="nb">Phường Sầm Sơn, Tỉnh Thanh Hóa</small></dd><dt>事業内容</dt><dd>AIプロダクトの開発・販売、AI導入コンサルティング、オフショア開発</dd>',
 
     'ct.title': 'ご相談はお気軽に',
     'ct.lead': 'メール、Zalo、フォームのどれからでも受け付けています。1営業日以内にお返事します。',
@@ -134,7 +139,7 @@ var I18N = {
 
     'mu.title': 'Munemo turns long text into a summary and next steps',
     'mu.lead': 'Sales notes, meeting minutes, support tickets. Paste a long, unstructured block of text and Munemo condenses it into a few lines and suggests what to do next.',
-    'mu.l': '<li>Paste long text as it is</li><li>Key points in a few lines</li><li>Concrete next actions suggested</li><li>Your data is never used for training</li><li>Translation built in: paste Vietnamese, get the summary in Japanese or English</li>',
+    'mu.l': '<li>Paste long text as it is</li><li>Key points in a few lines</li><li>Concrete next actions suggested</li><li>Send to Slack, Jira or email in one click</li><li>Your data is never used for training</li><li>Translation built in: paste Vietnamese, get the summary in Japanese or English</li>',
     'mu.cta': 'Request a demo',
     'mu.hint': 'Paste long text to summarize',
     'mu.thinking': 'Summarizing and working out next actions…',
@@ -142,10 +147,15 @@ var I18N = {
     'mu.text': 'Met Mr. Yamada, department head at Company A, today. They currently manage customer inquiries in Excel, with a separate file per staff member, so finding past responses takes about 10 minutes per case. They get around 1,200 inquiries a month, double that in peak season. Interested in AI summaries but worried about data leaks, and they have no internal AI usage policy yet. Budget is planned for next fiscal year and the proposal goes to the board meeting next month. They want to start small with one department rather than company-wide. Ms. Sasaki from IT will join the next meeting. They want the demo to use sample data, not real data. They are also getting a proposal from Company B.',
     'mu.len': 'Pasted text, about 130 words',
     'mu.inputLabel': 'Text to summarize',
+    'mu.slack': 'Message Ms. Sasaki on Slack',
+    'mu.slackDone': 'Messaged Ms. Sasaki on Slack',
+    'mu.jira': 'Create Jira ticket',
+    'mu.jiraDone': 'Created Jira ticket SALES-128',
+    'mu.mail': 'Email Mr. Yamada',
+    'mu.mailDone': 'Emailed Mr. Yamada',
+    'mu.note': 'This is a demo. Nothing is actually sent.',
     'mu.run': 'Summarize it',
     'mu.tryHint': 'A sample sales note is ready.<br>Press the button to try it',
-    'mu.again': 'Try again',
-    'mu.ph': 'To try the demo again, press the button below',
     'mu.sum': '<h3>Summary</h3><ul><li>Inquiries tracked in Excel; finding history takes 10 min per case</li><li>About 1,200 inquiries a month, double at peak. Interested in AI summaries</li><li>Worried about data leaks; no AI usage policy yet</li><li>Board decision next month. Wants a one-department trial first</li></ul><h3 class="next">Next actions</h3><ol><li>Prepare a demo with sample data (Ms. Sasaki from IT attending)</li><li>Draft an AI usage policy</li><li>Send a one-department trial estimate before the board meeting</li><li>List comparison points against Company B</li></ol>',
 
     'off.title': 'Half an engineer and one AI agent make one team',
@@ -175,7 +185,7 @@ var I18N = {
     'pt3.t': 'AI adoption', 'pt3.d': 'Workflow-fit AI such as Munemo Assistant.',
 
     'co.title': 'Company profile',
-    'co.info': '<dt>Company</dt><dd>AXIRRIA DIGITAL VIETNAM COMPANY LIMITED</dd><dt>Founded</dt><dd>April 2024</dd><dt>CEO</dt><dd>Văn Nhật Duy</dd><dt>Capital</dt><dd>100,000,000 VND</dd><dt>Address</dt><dd>Sam Son Ward, Thanh Hoa Province, Vietnam<br><small class="nb">Phường Sầm Sơn, Tỉnh Thanh Hóa</small></dd><dt>Business</dt><dd>AI product development and sales, AI adoption consulting, offshore development</dd>',
+    'co.info': '<dt>Company</dt><dd>AXIRRIA DIGITAL VIETNAM COMPANY LIMITED</dd><dt>Founded</dt><dd>September 2026</dd><dt>CEO</dt><dd>Văn Nhật Duy</dd><dt>Capital</dt><dd>100,000,000 VND</dd><dt>Address</dt><dd>Sam Son Ward, Thanh Hoa Province, Vietnam<br><small class="nb">Phường Sầm Sơn, Tỉnh Thanh Hóa</small></dd><dt>Business</dt><dd>AI product development and sales, AI adoption consulting, offshore development</dd>',
 
     'ct.title': 'Talk to us',
     'ct.lead': 'Email, Zalo or the form below all reach the same team. We reply within one business day.',

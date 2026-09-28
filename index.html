@@ -148,6 +148,13 @@ h1 span,h2 span{display:inline-block}
 .try-btn:disabled{background:#E6E8F0;color:var(--indigo-2);box-shadow:none;cursor:default;animation:none}
 @media (prefers-reduced-motion:no-preference){.try-btn:not(:disabled){animation:ring 1.8s ease-out infinite}@keyframes ring{to{box-shadow:0 0 0 12px rgba(255,210,31,0)}}}
 @media (max-width:480px){.try{flex-direction:column;align-items:stretch}.try p{text-align:left}.try-btn{width:100%}}
+.sumwrap{flex:1;min-width:0;display:grid;gap:10px}
+.acts-row{display:flex;flex-wrap:wrap;gap:8px}
+.act{font:inherit;font-size:.85rem;font-weight:700;padding:10px 14px;border-radius:8px;border:1.5px solid var(--indigo);background:var(--white);color:var(--indigo);cursor:pointer}
+.act:hover{background:var(--indigo);color:var(--white)}
+.act.done,.act.done:hover{background:var(--yellow-soft);border-color:var(--yellow);color:var(--indigo);cursor:default}
+.act.done::before{content:"✓ "}
+.demo-note{font-size:.75rem;color:var(--indigo-2)}
 html:lang(ja) .hero h1{font-size:clamp(1.9rem,4vw,3.2rem)}
 @media (max-width:360px){html:lang(ja) .hero h1{font-size:1.65rem}}
 @media (prefers-reduced-motion:no-preference){.chat-body > .in{animation:rise .3s ease-out}@keyframes rise{from{opacity:0;transform:translateY(6px)}}}
@@ -313,10 +320,20 @@ footer .wrap{display:flex;justify-content:space-between;align-items:center;flex-
             <div class="msg" id="chatEmpty"><span class="av ai">M</span><div class="bubble" data-i18n="mu.empty"></div></div>
             <div class="msg me in" id="askMsg" hidden><div class="bubble long"><div class="clamp" data-i18n="mu.text"></div><small data-i18n="mu.len"></small></div></div>
             <div class="msg in" id="thinkMsg" hidden><span class="av ai">M</span><div class="thinking" data-i18n="mu.thinking"></div></div>
-            <div class="msg in" id="sumMsg" hidden><span class="av ai">M</span><div class="sumcard" data-i18n="mu.sum"></div></div>
+            <div class="msg in" id="sumMsg" hidden><span class="av ai">M</span>
+              <div class="sumwrap">
+                <div class="sumcard" data-i18n="mu.sum"></div>
+                <div class="acts-row">
+                  <button class="act" type="button" data-i18n="mu.slack" data-done="mu.slackDone"></button>
+                  <button class="act" type="button" data-i18n="mu.jira" data-done="mu.jiraDone"></button>
+                  <button class="act" type="button" data-i18n="mu.mail" data-done="mu.mailDone"></button>
+                </div>
+                <p class="demo-note" data-i18n="mu.note"></p>
+              </div>
+            </div>
           </div>
-          <div class="chat-input">
-            <textarea class="field" id="muInput" rows="8" readonly data-i18n="mu.text" data-i18n-label="mu.inputLabel" data-i18n-ph="mu.ph"></textarea>
+          <div class="chat-input" id="chatInput">
+            <textarea class="field" id="muInput" rows="8" readonly data-i18n="mu.text" data-i18n-label="mu.inputLabel"></textarea>
             <div class="try">
               <p data-i18n="mu.tryHint"></p>
               <button class="btn try-btn" type="button" id="sumBtn" data-i18n="mu.run"></button>
@@ -439,32 +456,27 @@ footer .wrap{display:flex;justify-content:space-between;align-items:center;flex-
   try { saved = saved || localStorage.getItem('lang'); } catch (e) {}
   setLang(saved || (/^ja/.test(navigator.language) ? 'ja' : 'en'));
 
-  var sumBtn = document.getElementById('sumBtn'), muInput = document.getElementById('muInput');
   function $(id) { return document.getElementById(id); }
-  function setBtn(key) { sumBtn.dataset.i18n = key; sumBtn.textContent = I18N[document.documentElement.lang][key]; }
-  var tryHint = document.querySelector('.try p');
+  var sumBtn = $('sumBtn');
   sumBtn.addEventListener('click', function () {
-    if (sumBtn.dataset.i18n === 'mu.again') {
-      ['askMsg', 'thinkMsg', 'sumMsg'].forEach(function (id) { $(id).hidden = true; });
-      $('chatEmpty').hidden = false;
-      muInput.value = muInput.defaultValue;
-      setBtn('mu.run');
-      tryHint.hidden = false;
-      return;
-    }
-    tryHint.hidden = true;
     var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
-    sumBtn.disabled = true;
+    $('chatInput').hidden = true;
     $('chatEmpty').hidden = true;
     $('askMsg').hidden = false;
-    muInput.value = '';
     $('thinkMsg').hidden = false;
     setTimeout(function () {
       $('thinkMsg').hidden = true;
       $('sumMsg').hidden = false;
-      setBtn('mu.again');
-      sumBtn.disabled = false;
     }, reduce ? 0 : 1200);
+  });
+  // Demo only: follow-up buttons switch to their "done" label, nothing is sent.
+  document.querySelectorAll('.act').forEach(function (b) {
+    b.addEventListener('click', function () {
+      b.dataset.i18n = b.dataset.done;
+      b.textContent = I18N[document.documentElement.lang][b.dataset.done];
+      b.classList.add('done');
+      b.disabled = true;
+    });
   });
 
   var form = document.getElementById('contactForm'), msg = document.getElementById('formMsg');
