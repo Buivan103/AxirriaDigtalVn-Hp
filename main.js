@@ -84,11 +84,17 @@
   // Contact form
   var form = $('contactForm'), msg = $('formMsg');
   if (form) {
+    // Submit stays disabled until every required field is valid and consent is ticked,
+    // so the browser's own validation bubbles never show.
+    var send = form.querySelector('[type=submit]');
+    var sync = function () { send.disabled = !form.checkValidity(); };
+    ['input', 'change', 'focusin'].forEach(function (ev) { form.addEventListener(ev, sync); });
+    sync();
     form.addEventListener('submit', function (e) {
       e.preventDefault();
       msg.textContent = dict['f.sending'];
       fetch(form.action, { method: 'POST', body: new FormData(form), headers: { Accept: 'application/json' } })
-        .then(function (r) { if (!r.ok) throw 0; form.reset(); msg.textContent = dict['f.ok']; })
+        .then(function (r) { if (!r.ok) throw 0; form.reset(); sync(); msg.textContent = dict['f.ok']; })
         .catch(function () { msg.textContent = dict['f.err']; });
     });
   }

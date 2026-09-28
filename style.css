@@ -310,3 +310,6 @@ footer .wrap{display:flex;justify-content:space-between;align-items:center;flex-
 
 /* spam honeypot: off-screen, never filled by people */
 .hp{position:absolute;left:-9999px;width:1px;height:1px;opacity:0}
+
+/* contact form submit: disabled until the form is complete */
+#contactForm .btn:disabled{background:#C9CDDD;color:var(--white);cursor:not-allowed}
