@@ -100,7 +100,7 @@ var I18N = {
     'pt3.t': 'AI導入支援', 'pt3.d': 'Munemo Assistant など、業務に沿ったAIを提供。',
 
     'co.title': '会社概要',
-    'co.info': '<dt>会社名</dt><dd>AXIRRIA DIGITAL VIETNAM COMPANY LIMITED</dd><dt>設立</dt><dd>2026年9月</dd><dt>代表者</dt><dd>代表取締役 <span class="nb">Văn Nhật Duy</span> <span class="nb">（ヴァン・ニャット・ズイ）</span></dd><dt>資本金</dt><dd>100,000,000 VND</dd><dt>所在地</dt><dd>ベトナム タインホア省 サムソン坊<br><small class="nb">Phường Sầm Sơn, Tỉnh Thanh Hóa</small></dd><dt>事業内容</dt><dd>AIプロダクトの開発・販売、AI導入コンサルティング、オフショア開発</dd>',
+    'co.info': '<dt>会社名</dt><dd>AXIRRIA DIGITAL VIETNAM COMPANY LIMITED</dd><dt>設立</dt><dd>2026年9月</dd><dt>代表者</dt><dd>代表取締役 <span class="nb">Văn Nhật Duy</span> <span class="nb">（ヴァン・ニャット・ズイ）</span></dd><dt>共同創業者</dt><dd><span class="nb">土田 陽日</span> <span class="nb">（TSUCHIDA HARUKA）</span></dd><dt>資本金</dt><dd>100,000,000 VND</dd><dt>所在地</dt><dd>ベトナム タインホア省 サムソン坊<br><small class="nb">Phường Sầm Sơn, Tỉnh Thanh Hóa</small></dd><dt>事業内容</dt><dd>AIプロダクトの開発・販売、AI導入コンサルティング、オフショア開発</dd>',
 
     'ct.title': 'ご相談はお気軽に',
     'ct.lead': 'メール、Zalo、フォームのどれからでも受け付けています。1営業日以内にお返事します。',
@@ -213,7 +213,7 @@ var I18N = {
     'pt3.t': 'AI adoption', 'pt3.d': 'Workflow-fit AI such as Munemo Assistant.',
 
     'co.title': 'Company profile',
-    'co.info': '<dt>Company</dt><dd>AXIRRIA DIGITAL VIETNAM COMPANY LIMITED</dd><dt>Founded</dt><dd>September 2026</dd><dt>CEO</dt><dd>Văn Nhật Duy</dd><dt>Capital</dt><dd>100,000,000 VND</dd><dt>Address</dt><dd>Sam Son Ward, Thanh Hoa Province, Vietnam<br><small class="nb">Phường Sầm Sơn, Tỉnh Thanh Hóa</small></dd><dt>Business</dt><dd>AI product development and sales, AI adoption consulting, offshore development</dd>',
+    'co.info': '<dt>Company</dt><dd>AXIRRIA DIGITAL VIETNAM COMPANY LIMITED</dd><dt>Founded</dt><dd>September 2026</dd><dt>CEO</dt><dd>Văn Nhật Duy</dd><dt>Co-founder</dt><dd>TSUCHIDA Haruka <span class="nb">(土田 陽日)</span></dd><dt>Capital</dt><dd>100,000,000 VND</dd><dt>Address</dt><dd>Sam Son Ward, Thanh Hoa Province, Vietnam<br><small class="nb">Phường Sầm Sơn, Tỉnh Thanh Hóa</small></dd><dt>Business</dt><dd>AI product development and sales, AI adoption consulting, offshore development</dd>',
 
     'ct.title': 'Talk to us',
     'ct.lead': 'Email, Zalo or the form below all reach the same team. We reply within one business day.',
