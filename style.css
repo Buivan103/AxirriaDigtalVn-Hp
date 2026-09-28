@@ -307,3 +307,6 @@ footer .wrap{display:flex;justify-content:space-between;align-items:center;flex-
 @media (prefers-reduced-motion:reduce){
   .js [data-reveal],.js .day .track i{opacity:1;transform:none;transition:none}
 }
+
+/* spam honeypot: off-screen, never filled by people */
+.hp{position:absolute;left:-9999px;width:1px;height:1px;opacity:0}

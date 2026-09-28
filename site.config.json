@@ -1,6 +1,6 @@
 {
   "siteUrl": "https://axirriadigital.com/",
   "email": "contact@axirriadigital.com",
-  "formEndpoint": "https://formspree.io/f/YOUR_FORM_ID",
+  "formEndpoint": "/api/contact",
   "munemoUrl": "https://www.axirria.co.jp/"
 }

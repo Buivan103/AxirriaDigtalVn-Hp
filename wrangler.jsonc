@@ -1,6 +1,9 @@
-// Cloudflare Workers static site: serves the output of `node build.js`.
+// Cloudflare Worker: serves dist/ (output of `node build.js`) and the contact form API (worker.js).
+// Secret CONTACT_TO (comma-separated verified destination addresses) is set in the dashboard.
 {
   "name": "axirriadigtalvn-hp",
+  "main": "worker.js",
   "compatibility_date": "2026-09-01",
-  "assets": { "directory": "./dist" }
+  "assets": { "directory": "./dist", "binding": "ASSETS" },
+  "send_email": [{ "name": "EMAIL" }]
 }

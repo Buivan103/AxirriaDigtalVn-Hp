@@ -7,6 +7,7 @@ Static site, Japanese at `/` and English at `/en/`. Pages are pre-rendered so th
 - `i18n.js` — all copy, JA and EN. Also loaded at runtime for demo/form messages.
 - `site.config.json` — site URL, email, form endpoint, Munemo link
 - `style.css`, `main.js` — shared styles and interactions
+- `worker.js` — Cloudflare Worker: serves `dist/` and handles the contact form at `POST /api/contact` (test: `node worker.test.mjs`)
 - `build.js` — writes the deployable site to `dist/` (pages for JA/EN + assets). `dist/` is not committed.
 - `og.png` — share image, rendered from `src/og.html`
 - `logo-mark.svg` — favicon; `logo-options/` — logo exploration (not linked; delete before launch if not needed)
@@ -29,7 +30,7 @@ Regenerate `og.png` after changing the headline (serve the repo root, e.g. `pyth
 ```
 
 ## Before going live
-- `site.config.json`: real `email`, `formEndpoint` (Formspree form ID or your own API), the final `siteUrl` (used for canonical, hreflang and OGP), and `munemoUrl` (currently axirria.co.jp until Munemo has its own page).
+- `site.config.json`: real `email`, `formEndpoint` (`/api/contact`, handled by `worker.js`), the final `siteUrl` (used for canonical, hreflang and OGP), and `munemoUrl` (currently axirria.co.jp until Munemo has its own page).
 - `i18n.js` `cs.1` / `cs.2`: the case studies are **samples** (tagged サンプル事例). Replace with real, approved cases or remove the section from `src/index.html`.
 - `i18n.js` `pp.body`: privacy policy is a template — have it reviewed (Vietnam Decree 13/2023/ND-CP, Japan APPI).
 - `i18n.js` `nw.items`: news list.
@@ -37,6 +38,11 @@ Regenerate `og.png` after changing the headline (serve the repo root, e.g. `pyth
 ## Deploy (Cloudflare Workers)
 Workers & Pages → Create → Import a repository → this repo.
 - Build command: `node build.js`
-- Deploy command: `npx wrangler deploy` (uses `wrangler.jsonc`, which serves `dist/`)
+- Deploy command: `npx wrangler deploy` (uses `wrangler.jsonc`: `worker.js` + static assets from `dist/`)
 
 Then Settings → Domains & Routes → add `axirriadigital.com` and `www.axirriadigital.com`. Every push to `main` redeploys.
+
+### Contact form email
+The form posts to `/api/contact`; `worker.js` emails it via the Worker `send_email` binding (free when sending to verified Email Routing destination addresses).
+- Email Routing must be enabled on `axirriadigital.com`, and each recipient verified under Email Routing → Destination addresses.
+- Worker → Settings → Variables and Secrets → add secret `CONTACT_TO` = comma-separated recipients (kept out of the repo).
