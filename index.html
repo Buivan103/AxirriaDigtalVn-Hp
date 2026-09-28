@@ -4,6 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Axirria Digital Vietnam</title>
+<link rel="icon" href="logo-mark.svg" type="image/svg+xml">
 <meta name="description" content="Axirria Digital Vietnam: AI products, AI adoption and offshore development estimated by the hour.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -39,8 +40,9 @@ h2{font-size:clamp(1.6rem,3vw,2.25rem);max-width:22em}
 /* header */
 header{background:var(--yellow)}
 .nav{display:flex;align-items:center;gap:32px;height:76px}
-.logo{font-family:var(--display);font-weight:800;font-size:1.2rem;text-decoration:none;margin-right:auto;letter-spacing:-.01em}
-.logo span{font-weight:500}
+.logo{font-family:var(--display);font-weight:800;font-size:1.2rem;text-decoration:none;margin-right:auto;letter-spacing:-.01em;display:flex;align-items:center;gap:10px}
+.logo img{display:block}
+.logo span{font-weight:500;margin-left:-4px}
 .menu{display:flex;gap:28px;list-style:none;font-size:.92rem}
 .menu a{text-decoration:none}
 .menu a:hover{text-decoration:underline;text-underline-offset:5px}
@@ -49,7 +51,8 @@ header{background:var(--yellow)}
 .lang button[aria-pressed=true]{background:var(--white);color:var(--indigo)}
 @media (max-width:900px){.menu{display:none}}
 .logo,.lang button{white-space:nowrap}
-@media (max-width:420px){.logo{font-size:1rem}.nav{gap:12px}}
+@media (max-width:420px){.logo{font-size:1rem}.nav{gap:12px}.logo img{width:32px;height:32px}}
+@media (max-width:374px){.logo span{display:none}}
 
 /* hero: the estimate sheet is the one memorable element */
 .hero{background:var(--yellow);padding:56px 0 96px}
@@ -226,7 +229,7 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
 
 <header>
   <div class="wrap nav">
-    <a class="logo" href="#top">Axirria <span>Digital Vietnam</span></a>
+    <a class="logo" href="#top"><img src="logo-mark.svg" width="36" height="36" alt=""><b>Axirria</b> <span>Digital Vietnam</span></a>
     <ul class="menu">
       <li><a href="#services" data-i18n="nav.services"></a></li>
       <li><a href="#munemo" data-i18n="nav.munemo"></a></li>
