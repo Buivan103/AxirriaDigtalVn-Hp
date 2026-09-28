@@ -1,0 +1,219 @@
+<!doctype html>
+<html lang="{{lang}}">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+{{head}}
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=BIZ+UDPGothic:wght@400;700&family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&display=swap">
+<link rel="stylesheet" href="{{base}}style.css">
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a class="logo" href="#top" aria-label="Axirria Digital Vietnam"><span class="wm" aria-hidden="true">ax<i>ı<b class="h"></b></i>rr<i>ı<b class="f"></b></i>a</span><small>Digital Vietnam</small></a>
+    <ul class="menu">
+      <li><a href="#services" data-i18n="nav.services"></a></li>
+      <li><a href="#munemo" data-i18n="nav.munemo"></a></li>
+      <li><a href="#offshore" data-i18n="nav.offshore"></a></li>
+      <li><a href="#cases" data-i18n="nav.cases"></a></li>
+      <li><a href="#company" data-i18n="nav.company"></a></li>
+      <li><a href="#contact" data-i18n="nav.contact"></a></li>
+    </ul>
+    <nav class="lang" aria-label="Language">{{langSwitch}}</nav>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <div class="wrap">
+      <div>
+        <h1 data-i18n="hero.title"></h1>
+        <p data-i18n="hero.lead"></p>
+        <div class="cta">
+          <a class="btn" href="#contact" data-i18n="hero.cta1"></a>
+        </div>
+      </div>
+      <div class="sheet" role="figure" aria-labelledby="sheetTitle">
+        <h2 id="sheetTitle"><span data-i18n="est.title"></span><small data-i18n="est.team"></small></h2>
+        <table>
+          <thead><tr><th data-i18n="est.task"></th><th data-i18n="est.split"></th><th style="text-align:right" data-i18n="est.hours"></th></tr></thead>
+          <tbody>
+            <tr><td data-i18n="est.r1"></td><td class="bar"><div class="split"><i class="dev" style="width:20%"></i><i class="ai" style="width:60%"></i></div></td><td class="h">4.0h</td></tr>
+            <tr><td data-i18n="est.r2"></td><td class="bar"><div class="split"><i class="dev" style="width:10%"></i><i class="ai" style="width:50%"></i></div></td><td class="h">3.0h</td></tr>
+            <tr><td data-i18n="est.r3"></td><td class="bar"><div class="split"><i class="dev" style="width:30%"></i><i class="ai" style="width:70%"></i></div></td><td class="h">5.0h</td></tr>
+            <tr><td data-i18n="est.r4"></td><td class="bar"><div class="split"><i class="ai loop" style="width:100%"></i></div></td><td class="h" data-i18n="est.par"></td></tr>
+          </tbody>
+          <tfoot><tr><td colspan="2" data-i18n="est.total"></td><td class="h">12h</td></tr></tfoot>
+        </table>
+        <div class="key"><span data-i18n="est.dev"></span><span class="ai" data-i18n="est.ai"></span><b data-i18n="est.demo"></b></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="services" class="block">
+    <div class="wrap">
+      <h2 data-i18n="svc.title"></h2>
+      <p class="sub" data-i18n="svc.lead"></p>
+      <div class="rows">
+        <article><h3 data-i18n="svc1.t"></h3><p data-i18n="svc1.d"></p><ul data-i18n="svc1.l"></ul></article>
+        <article><h3 data-i18n="svc2.t"></h3><p data-i18n="svc2.d"></p><ul data-i18n="svc2.l"></ul></article>
+        <article><h3 data-i18n="svc3.t"></h3><p data-i18n="svc3.d"></p><ul data-i18n="svc3.l"></ul></article>
+      </div>
+    </div>
+  </section>
+
+  <section id="munemo" class="block tint">
+    <div class="wrap">
+      <h2 data-i18n="mu.title"></h2>
+      <p class="sub" data-i18n="mu.lead"></p>
+      <div class="mu">
+        <div>
+          <ul data-i18n="mu.l"></ul>
+          <a class="btn" href="#contact" data-i18n="mu.cta"></a>
+        </div>
+        <div class="chat">
+          <div class="chat-head"><span class="av ai">M</span><strong>Munemo<small data-i18n="mu.hint"></small></strong></div>
+          <div class="chat-body" aria-live="polite">
+            <div class="msg" id="chatEmpty"><span class="av ai">M</span><div class="bubble" data-i18n="mu.empty"></div></div>
+            <div class="msg me in" id="askMsg" hidden><div class="bubble long"><div class="clamp" data-i18n="mu.text"></div><small data-i18n="mu.len"></small></div></div>
+            <div class="msg in" id="thinkMsg" hidden><span class="av ai">M</span><div class="thinking" data-i18n="mu.thinking"></div></div>
+            <div class="msg in" id="sumMsg" hidden><span class="av ai">M</span>
+              <div class="sumwrap">
+                <div class="sumcard" data-i18n="mu.sum"></div>
+                <div class="acts-row">
+                  <button class="act" type="button" data-i18n="mu.slack" data-done="mu.slackDone"></button>
+                  <button class="act" type="button" data-i18n="mu.jira" data-done="mu.jiraDone"></button>
+                  <button class="act" type="button" data-i18n="mu.mail" data-done="mu.mailDone"></button>
+                </div>
+                <p class="demo-note" data-i18n="mu.note"></p>
+              </div>
+            </div>
+          </div>
+          <div class="chat-input" id="chatInput">
+            <textarea class="field" id="muInput" rows="8" readonly data-i18n="mu.text" data-i18n-label="mu.inputLabel"></textarea>
+            <div class="try">
+              <p data-i18n="mu.tryHint"></p>
+              <button class="btn try-btn" type="button" id="sumBtn" data-i18n="mu.run"></button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="offshore" class="block">
+    <div class="wrap">
+      <h2 data-i18n="off.title"></h2>
+      <p class="sub" data-i18n="off.lead"></p>
+      <div class="roles">
+        <div class="role dev"><h3><span>0.5</span><em style="font-style:normal" data-i18n="off.dev"></em></h3><ul data-i18n="off.devl"></ul></div>
+        <div class="role ai">
+          <div class="ai-top"><h3><span>1</span><em style="font-style:normal" data-i18n="off.agent"></em></h3><p class="live"><i></i><span data-i18n="off.live"></span></p></div>
+          <div class="ai-body"><ul data-i18n="off.agentl"></ul><div class="clock"><strong>24<small>h</small></strong><span data-i18n="off.nonstop"></span></div></div>
+        </div>
+      </div>
+      <div class="day" role="figure" aria-labelledby="dayTitle">
+        <h3 id="dayTitle" data-i18n="day.title"></h3>
+        <div class="lane"><span data-i18n="est.dev"></span><div class="track"><i class="dev" style="left:37.5%;width:37.5%"></i></div></div>
+        <div class="lane"><span data-i18n="est.ai"></span><div class="track"><i class="loop" style="left:0;width:100%"></i></div></div>
+        <div class="axis" aria-hidden="true"><span>0:00</span><span>6:00</span><span>12:00</span><span>18:00</span><span>24:00</span></div>
+        <p data-i18n="day.note"></p>
+      </div>
+      <div class="tbl">
+        <table class="cmp">
+          <thead><tr><th></th><th data-i18n="cmp.old"></th><th data-i18n="cmp.new"></th></tr></thead>
+          <tbody data-i18n="cmp.rows"></tbody>
+        </table>
+      </div>
+      <ol class="steps">
+        <li><h3 data-i18n="step1.t"></h3><p data-i18n="step1.d"></p></li>
+        <li><h3 data-i18n="step2.t"></h3><p data-i18n="step2.d"></p></li>
+        <li><h3 data-i18n="step3.t"></h3><p data-i18n="step3.d"></p></li>
+        <li><h3 data-i18n="step4.t"></h3><p data-i18n="step4.d"></p></li>
+      </ol>
+    </div>
+  </section>
+
+  <section id="cases" class="block tint">
+    <div class="wrap">
+      <h2 data-i18n="cs.title"></h2>
+      <p class="sub" data-i18n="cs.lead"></p>
+      <div class="cases">
+        <article class="case" data-i18n="cs.1"></article>
+        <article class="case" data-i18n="cs.2"></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="block partner">
+    <div class="wrap">
+      <div>
+        <h2 data-i18n="pt.title"></h2>
+        <blockquote data-i18n="pt.quote"></blockquote>
+        <p class="sub" data-i18n="pt.lead"></p>
+        <p style="margin-top:24px"><a class="textlink" href="https://www.axirria.co.jp/" target="_blank" rel="noopener" data-i18n="pt.link"></a></p>
+      </div>
+      <dl>
+        <dt data-i18n="pt1.t"></dt><dd data-i18n="pt1.d"></dd>
+        <dt data-i18n="pt2.t"></dt><dd data-i18n="pt2.d"></dd>
+        <dt data-i18n="pt3.t"></dt><dd data-i18n="pt3.d"></dd>
+      </dl>
+    </div>
+  </section>
+
+  <section id="news" class="block tint">
+    <div class="wrap">
+      <h2 data-i18n="nw.title"></h2>
+      <ul class="news" data-i18n="nw.items"></ul>
+    </div>
+  </section>
+
+  <section id="company" class="block">
+    <div class="wrap">
+      <h2 data-i18n="co.title"></h2>
+      <dl class="info" data-i18n="co.info"></dl>
+    </div>
+  </section>
+
+  <section id="contact" class="block tint">
+    <div class="wrap">
+      <h2 data-i18n="ct.title"></h2>
+      <p class="sub" data-i18n="ct.lead"></p>
+      <div class="contact">
+        <div class="ways">
+          <a href="mailto:{{cfg.email}}"><small data-i18n="ct.mail"></small><strong>{{cfg.email}}</strong></a>
+          <a href="https://zalo.me/{{cfg.zaloId}}" target="_blank" rel="noopener"><small>Zalo</small><strong>{{cfg.zaloLabel}}</strong></a>
+        </div>
+        <form id="contactForm" action="{{cfg.formEndpoint}}" method="POST">
+          <div class="row2">
+            <label><span data-i18n="f.name"></span><input name="name" required autocomplete="name"></label>
+            <label><span data-i18n="f.company"></span><input name="company" autocomplete="organization"></label>
+          </div>
+          <label><span data-i18n="f.email"></span><input type="email" name="email" required autocomplete="email"></label>
+          <label><span data-i18n="f.topic"></span><select name="topic" data-i18n="f.topics"></select></label>
+          <label><span data-i18n="f.msg"></span><textarea name="message" rows="4" required></textarea></label>
+          <label class="consent"><input type="checkbox" name="privacy_consent" value="yes" required><span data-i18n="f.consent"></span></label>
+          <button class="btn" type="submit" data-i18n="f.send"></button>
+          <p id="formMsg" role="status"></p>
+        </form>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span class="ft-logo" aria-label="Axirria Digital Vietnam"><span class="wm" aria-hidden="true">ax<i>ı<b class="h"></b></i>rr<i>ı<b class="f"></b></i>a</span><small>Digital Vietnam</small></span>
+    <span>© 2026 AXIRRIA DIGITAL VIETNAM COMPANY LIMITED</span>
+    <a class="ft-link" href="{{privacyHref}}" data-i18n="ft.privacy"></a>
+    <span data-i18n="ft.partner"></span>
+  </div>
+</footer>
+
+<script src="{{base}}i18n.js"></script>
+<script src="{{base}}main.js"></script>
+</body>
+</html>
