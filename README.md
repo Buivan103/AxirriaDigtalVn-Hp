@@ -29,7 +29,7 @@ Regenerate `og.png` after changing the headline (server running):
 ```
 
 ## Before going live
-- `site.config.json`: real `email`, `zaloId` / `zaloLabel`, `formEndpoint` (Formspree form ID or your own API), and the final `siteUrl` (used for canonical, hreflang and OGP).
+- `site.config.json`: real `email`, `zaloId` / `zaloLabel`, `formEndpoint` (Formspree form ID or your own API), the final `siteUrl` (used for canonical, hreflang and OGP), and `munemoUrl` (currently axirria.co.jp until Munemo has its own page).
 - `i18n.js` `cs.1` / `cs.2`: the case studies are **samples** (tagged サンプル事例). Replace with real, approved cases or remove the section from `src/index.html`.
 - `i18n.js` `pp.body`: privacy policy is a template — have it reviewed (Vietnam Decree 13/2023/ND-CP, Japan APPI).
 - `i18n.js` `nw.items`: news list.

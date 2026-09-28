@@ -3,5 +3,6 @@
   "email": "contact@axirria-digital.vn",
   "zaloId": "0900000000",
   "zaloLabel": "+84 900 000 000",
-  "formEndpoint": "https://formspree.io/f/YOUR_FORM_ID"
+  "formEndpoint": "https://formspree.io/f/YOUR_FORM_ID",
+  "munemoUrl": "https://www.axirria.co.jp/"
 }
