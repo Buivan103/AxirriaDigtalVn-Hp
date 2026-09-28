@@ -23,4 +23,9 @@ assert.equal((await post({ ...ok, website: 'bot' })).status, 200); assert.equal(
 assert.equal((await post({ ...ok, email: 'bad' })).status, 400);
 assert.equal((await worker.fetch(new Request('https://s/api/contact'), env)).status, 405);
 assert.equal(await (await worker.fetch(new Request('https://s/'), env)).text(), 'asset');
+// rate limit: blocked requests get 429 and send nothing
+const before = sent.length;
+const limited = { ...env, CONTACT_LIMIT: { limit: async () => ({ success: false }) } };
+const r429 = await worker.fetch(new Request('https://s/api/contact', { method: 'POST', body: fd(ok) }), limited);
+assert.equal(r429.status, 429); assert.equal(sent.length, before);
 console.log('worker tests passed');

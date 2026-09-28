@@ -87,7 +87,15 @@
     // Submit stays disabled until every required field is valid and consent is ticked,
     // so the browser's own validation bubbles never show.
     var send = form.querySelector('[type=submit]');
-    var sync = function () { send.disabled = !form.checkValidity(); };
+    // After a successful send, lock the form for COOLDOWN ms (kept across reloads).
+    var COOLDOWN = 60000, KEY = 'contactSentAt';
+    var sentAt = function () { try { return +localStorage.getItem(KEY) || 0; } catch (e) { return 0; } };
+    var coolingDown = function () { return Date.now() - sentAt() < COOLDOWN; };
+    var sync = function () {
+      send.disabled = !form.checkValidity() || coolingDown();
+      if (coolingDown() && !msg.textContent) msg.textContent = dict['f.wait'];
+    };
+    setInterval(function () { if (!coolingDown() && msg.textContent === dict['f.wait']) msg.textContent = ''; sync(); }, 5000);
     ['input', 'change', 'focusin'].forEach(function (ev) { form.addEventListener(ev, sync); });
     sync();
     form.addEventListener('submit', function (e) {
@@ -97,7 +105,12 @@
       msg.textContent = dict['f.sending'];
       msg.insertAdjacentHTML('beforeend', '<span class="dots" aria-hidden="true"><i></i><i></i><i></i></span>');
       fetch(form.action, { method: 'POST', body: new FormData(form), headers: { Accept: 'application/json' } })
-        .then(function (r) { if (!r.ok) throw 0; form.reset(); msg.textContent = dict['f.ok']; })
+        .then(function (r) {
+          if (r.status === 429) { msg.textContent = dict['f.wait']; return; }
+          if (!r.ok) throw 0;
+          try { localStorage.setItem(KEY, Date.now()); } catch (e) {}
+          form.reset(); msg.textContent = dict['f.ok'];
+        })
         .catch(function () { msg.textContent = dict['f.err']; })
         .then(sync);
     });

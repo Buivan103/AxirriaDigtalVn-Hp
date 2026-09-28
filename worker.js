@@ -21,6 +21,12 @@ export function parseInquiry(form) {
 }
 
 async function handleContact(request, env) {
+  // Per-IP limit (3 per minute, see wrangler.jsonc). Skipped if the binding is absent.
+  if (env.CONTACT_LIMIT) {
+    const ip = request.headers.get('cf-connecting-ip') || 'unknown';
+    const { success } = await env.CONTACT_LIMIT.limit({ key: ip });
+    if (!success) return json(429, { ok: false, error: 'rate limited' });
+  }
   let form;
   try { form = await request.formData(); } catch { return json(400, { ok: false, error: 'bad request' }); }
   const r = parseInquiry(form);
