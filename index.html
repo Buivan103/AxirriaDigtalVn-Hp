@@ -135,7 +135,8 @@ h1 span,h2 span{display:inline-block}
 .clamp{display:-webkit-box;-webkit-line-clamp:5;-webkit-box-orient:vertical;overflow:hidden;font-size:.85rem;opacity:.95}
 .bubble.long small{display:block;color:var(--yellow);margin:8px 0 0;font-size:.75rem}
 .chat-input{display:flex;gap:10px;align-items:flex-end;padding:12px 14px;border-top:1px solid var(--line)}
-.chat-input .field{flex:1;min-width:0;border:1px solid var(--line);border-radius:10px;padding:9px 14px;font:inherit;font-size:.85rem;color:var(--indigo);line-height:1.6;resize:none;background:var(--white)}
+.chat-input .field{flex:1;min-width:0;border:1px solid var(--line);border-radius:10px;padding:9px 14px;font:inherit;font-size:.85rem;color:var(--indigo);line-height:1.6;resize:none;background:var(--white);field-sizing:content;min-height:3.4em}
+.chat-input .field::placeholder{color:var(--indigo-2)}
 .chat-input .btn{padding:10px 18px;font-size:.9rem;border-radius:10px}
 .chat-input .btn:disabled{background:#C9CDDD;cursor:default}
 @media (prefers-reduced-motion:no-preference){.chat-body > .in{animation:rise .3s ease-out}@keyframes rise{from{opacity:0;transform:translateY(6px)}}}
@@ -301,7 +302,7 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
             <div class="msg in" id="sumMsg" hidden><span class="av ai">M</span><div class="sumcard" data-i18n="mu.sum"></div></div>
           </div>
           <div class="chat-input">
-            <textarea class="field" id="muInput" rows="3" readonly data-i18n="mu.text" data-i18n-label="mu.inputLabel"></textarea>
+            <textarea class="field" id="muInput" rows="8" readonly data-i18n="mu.text" data-i18n-label="mu.inputLabel" data-i18n-ph="mu.ph"></textarea>
             <button class="btn" type="button" id="sumBtn" data-i18n="mu.run"></button>
           </div>
         </div>
@@ -409,6 +410,7 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
       var v = dict[el.dataset.i18n];
       if (v != null) el.innerHTML = v;
     });
+    document.querySelectorAll('[data-i18n-ph]').forEach(function (el) { el.setAttribute('placeholder', dict[el.dataset.i18nPh]); });
     document.querySelectorAll('[data-i18n-label]').forEach(function (el) { el.setAttribute('aria-label', dict[el.dataset.i18nLabel]); });
     buttons.forEach(function (b) { b.setAttribute('aria-pressed', b.dataset.lang === lang); });
     try { localStorage.setItem('lang', lang); } catch (e) {}
@@ -419,18 +421,28 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
   try { saved = saved || localStorage.getItem('lang'); } catch (e) {}
   setLang(saved || (/^ja/.test(navigator.language) ? 'ja' : 'en'));
 
-  var sumBtn = document.getElementById('sumBtn');
+  var sumBtn = document.getElementById('sumBtn'), muInput = document.getElementById('muInput');
+  function $(id) { return document.getElementById(id); }
+  function setBtn(key) { sumBtn.dataset.i18n = key; sumBtn.textContent = I18N[document.documentElement.lang][key]; }
   sumBtn.addEventListener('click', function () {
-    var think = document.getElementById('thinkMsg');
+    if (sumBtn.dataset.i18n === 'mu.again') {
+      ['askMsg', 'thinkMsg', 'sumMsg'].forEach(function (id) { $(id).hidden = true; });
+      $('chatEmpty').hidden = false;
+      muInput.value = muInput.defaultValue;
+      setBtn('mu.run');
+      return;
+    }
     var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
     sumBtn.disabled = true;
-    document.getElementById('chatEmpty').hidden = true;
-    document.getElementById('askMsg').hidden = false;
-    document.getElementById('muInput').value = '';
-    think.hidden = false;
+    $('chatEmpty').hidden = true;
+    $('askMsg').hidden = false;
+    muInput.value = '';
+    $('thinkMsg').hidden = false;
     setTimeout(function () {
-      think.hidden = true;
-      document.getElementById('sumMsg').hidden = false;
+      $('thinkMsg').hidden = true;
+      $('sumMsg').hidden = false;
+      setBtn('mu.again');
+      sumBtn.disabled = false;
     }, reduce ? 0 : 1200);
   });
 

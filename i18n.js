@@ -49,6 +49,8 @@ var I18N = {
     'mu.len': '貼り付けたテキスト（約300文字）',
     'mu.inputLabel': '要約する文章',
     'mu.run': '送信',
+    'mu.again': 'もう一度試す',
+    'mu.ph': 'もう一度試すには、右のボタンを押してください',
     'mu.sum': '<h3>要約</h3><ul><li>問い合わせはExcel管理で、履歴検索に1件10分かかっている</li><li>月約1,200件（繁忙期は倍）。AI要約に関心あり</li><li>情報漏えいが懸念。社内のAI利用ルールは未整備</li><li>来月の役員会で稟議。まず1部署でトライアルしたい</li></ul><h3 class="next">次のアクション</h3><ol><li>サンプルデータでデモを準備（情報システム部 佐々木さん同席）</li><li>AI利用ルールのたたき台を用意する</li><li>1部署トライアルの見積りを役員会の前に提出</li><li>B社との比較ポイントを整理する</li></ol>',
 
     'off.title': 'エンジニア0.5人とAIエージェント1体で、1チーム',
@@ -140,6 +142,8 @@ var I18N = {
     'mu.len': 'Pasted text, about 130 words',
     'mu.inputLabel': 'Text to summarize',
     'mu.run': 'Send',
+    'mu.again': 'Try again',
+    'mu.ph': 'To try the demo again, press the button on the right',
     'mu.sum': '<h3>Summary</h3><ul><li>Inquiries tracked in Excel; finding history takes 10 min per case</li><li>About 1,200 inquiries a month, double at peak. Interested in AI summaries</li><li>Worried about data leaks; no AI usage policy yet</li><li>Board decision next month. Wants a one-department trial first</li></ul><h3 class="next">Next actions</h3><ol><li>Prepare a demo with sample data (Ms. Sasaki from IT attending)</li><li>Draft an AI usage policy</li><li>Send a one-department trial estimate before the board meeting</li><li>List comparison points against Company B</li></ol>',
 
     'off.title': 'Half an engineer and one AI agent make one team',
