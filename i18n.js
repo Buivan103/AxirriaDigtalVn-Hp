@@ -70,7 +70,7 @@ var I18N = {
     'pt3.t': 'AI導入支援', 'pt3.d': 'Munemo Assistant など、業務に沿ったAIを提供。',
 
     'co.title': '会社概要',
-    'co.info': '<dt>会社名</dt><dd>AXIRRIA DIGITAL VIETNAM COMPANY LIMITED</dd><dt>設立</dt><dd>2024年4月</dd><dt>代表者</dt><dd>代表取締役 Văn Nhật Duy（ヴァン・ニャット・ズイ）</dd><dt>資本金</dt><dd>100,000,000 VND</dd><dt>所在地</dt><dd>ベトナム タインホア省 サムソン坊（Phường Sầm Sơn, Tỉnh Thanh Hóa）</dd><dt>従業員数</dt><dd>30名（2026年9月現在）</dd><dt>事業内容</dt><dd>AIプロダクトの開発・販売、AI導入コンサルティング、オフショア開発</dd><dt>パートナー</dt><dd><a href="https://www.axirria.co.jp/" target="_blank" rel="noopener">有限会社アクシリア（日本）</a></dd>',
+    'co.info': '<dt>会社名</dt><dd>AXIRRIA DIGITAL VIETNAM COMPANY LIMITED</dd><dt>設立</dt><dd>2024年4月</dd><dt>代表者</dt><dd>代表取締役 Văn Nhật Duy（ヴァン・ニャット・ズイ）</dd><dt>資本金</dt><dd>100,000,000 VND</dd><dt>所在地</dt><dd>ベトナム タインホア省 サムソン坊（Phường Sầm Sơn, Tỉnh Thanh Hóa）</dd><dt>事業内容</dt><dd>AIプロダクトの開発・販売、AI導入コンサルティング、オフショア開発</dd><dt>パートナー</dt><dd><a href="https://www.axirria.co.jp/" target="_blank" rel="noopener">有限会社アクシリア（日本）</a></dd>',
 
     'ct.title': 'ご相談はお気軽に',
     'ct.lead': 'メール、Zalo、フォームのどれからでも受け付けています。1営業日以内にお返事します。',
@@ -155,7 +155,7 @@ var I18N = {
     'pt3.t': 'AI adoption', 'pt3.d': 'Workflow-fit AI such as Munemo Assistant.',
 
     'co.title': 'Company profile',
-    'co.info': '<dt>Company</dt><dd>AXIRRIA DIGITAL VIETNAM COMPANY LIMITED</dd><dt>Founded</dt><dd>April 2024</dd><dt>CEO</dt><dd>Văn Nhật Duy</dd><dt>Capital</dt><dd>100,000,000 VND</dd><dt>Address</dt><dd>Sam Son Ward, Thanh Hoa Province, Vietnam (Phường Sầm Sơn, Tỉnh Thanh Hóa)</dd><dt>Employees</dt><dd>30 (as of September 2026)</dd><dt>Business</dt><dd>AI product development and sales, AI adoption consulting, offshore development</dd><dt>Partner</dt><dd><a href="https://www.axirria.co.jp/" target="_blank" rel="noopener">Axirria Co., Ltd. (Japan)</a></dd>',
+    'co.info': '<dt>Company</dt><dd>AXIRRIA DIGITAL VIETNAM COMPANY LIMITED</dd><dt>Founded</dt><dd>April 2024</dd><dt>CEO</dt><dd>Văn Nhật Duy</dd><dt>Capital</dt><dd>100,000,000 VND</dd><dt>Address</dt><dd>Sam Son Ward, Thanh Hoa Province, Vietnam (Phường Sầm Sơn, Tỉnh Thanh Hóa)</dd><dt>Business</dt><dd>AI product development and sales, AI adoption consulting, offshore development</dd><dt>Partner</dt><dd><a href="https://www.axirria.co.jp/" target="_blank" rel="noopener">Axirria Co., Ltd. (Japan)</a></dd>',
 
     'ct.title': 'Talk to us',
     'ct.lead': 'Email, Zalo or the form below all reach the same team. We reply within one business day.',
