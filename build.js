@@ -7,19 +7,20 @@ const cfg = JSON.parse(fs.readFileSync('site.config.json', 'utf8'));
 const I18N = new Function(fs.readFileSync('i18n.js', 'utf8') + ';return I18N;')();
 const LANGS = { ja: { dir: '', og: 'ja_JP' }, en: { dir: 'en/', og: 'en_US' } };
 const PAGES = [
-  { src: 'src/index.html', file: '', title: 'meta.title' },
-  { src: 'src/privacy.html', file: 'privacy.html', title: 'pp.title' },
+  { src: 'src/index.html', dir: '', title: 'meta.title' },
+  { src: 'src/privacy.html', dir: 'privacy/', title: 'pp.title' },
 ];
 
 const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 
 function render(page, lang) {
   const dict = I18N[lang];
-  const base = LANGS[lang].dir ? '../' : '';
-  const url = (l) => cfg.siteUrl + LANGS[l].dir + page.file;
-  // Relative link to this same page in language l, from the current page.
-  const rel = (l) => ((LANGS[l].dir === LANGS[lang].dir ? '' : base + LANGS[l].dir) + page.file) || './';
-  const title = page.file ? dict[page.title] + (lang === 'ja' ? '｜' : ' | ') + 'Axirria Digital Vietnam' : dict['meta.title'];
+  // Every page is a directory index (clean URLs like /en/privacy/), so links are dir-relative.
+  const here = LANGS[lang].dir + page.dir;
+  const base = '../'.repeat(here.split('/').filter(Boolean).length);
+  const url = (l, dir = page.dir) => cfg.siteUrl + LANGS[l].dir + dir;
+  const rel = (to) => (path.posix.relative('/' + here, '/' + to) || '.') + '/';
+  const title = page.dir ? dict[page.title] + (lang === 'ja' ? '｜' : ' | ') + 'Axirria Digital Vietnam' : dict['meta.title'];
 
   const head = [
     `<title>${esc(title)}</title>`,
@@ -40,10 +41,10 @@ function render(page, lang) {
   ].join('\n');
 
   const langSwitch = Object.keys(LANGS).map((l) =>
-    `<a href="${rel(l)}" hreflang="${l}" lang="${l}"${l === lang ? ' aria-current="true"' : ''}>${l === 'ja' ? '日本語' : 'EN'}</a>`
+    `<a href="${rel(LANGS[l].dir + page.dir)}" hreflang="${l}" lang="${l}"${l === lang ? ' aria-current="true"' : ''}>${l === 'ja' ? '日本語' : 'EN'}</a>`
   ).join('');
 
-  const vars = { lang, base, head, langSwitch, homeHref: './', privacyHref: 'privacy.html' };
+  const vars = { lang, base, head, langSwitch, homeHref: rel(LANGS[lang].dir), privacyHref: rel(LANGS[lang].dir + 'privacy/') };
   for (const [k, v] of Object.entries(cfg)) vars['cfg.' + k] = v;
 
   let html = fs.readFileSync(page.src, 'utf8');
@@ -70,7 +71,7 @@ const ASSETS = ['style.css', 'main.js', 'i18n.js', 'logo-mark.svg', 'og.png'];
 fs.rmSync(OUT, { recursive: true, force: true });
 for (const page of PAGES) {
   for (const lang of Object.keys(LANGS)) {
-    const out = path.join(OUT, LANGS[lang].dir, page.file || 'index.html');
+    const out = path.join(OUT, LANGS[lang].dir, page.dir, 'index.html');
     fs.mkdirSync(path.dirname(out), { recursive: true });
     fs.writeFileSync(out, render(page, lang));
     console.log('wrote', out);
