@@ -134,11 +134,18 @@ h1 span,h2 span{display:inline-block}
 .bubble.long{max-width:100%}
 .clamp{display:-webkit-box;-webkit-line-clamp:5;-webkit-box-orient:vertical;overflow:hidden;font-size:.85rem;opacity:.95}
 .bubble.long small{display:block;color:var(--yellow);margin:8px 0 0;font-size:.75rem}
-.chat-input{display:flex;gap:10px;align-items:flex-end;padding:12px 14px;border-top:1px solid var(--line)}
-.chat-input .field{flex:1;min-width:0;border:1px solid var(--line);border-radius:10px;padding:9px 14px;font:inherit;font-size:.85rem;color:var(--indigo);line-height:1.6;resize:none;background:var(--white);field-sizing:content;min-height:3.4em}
+.chat-input{display:grid;gap:12px;padding:14px;border-top:1px solid var(--line)}
+.chat-input .field{width:100%;border:1px solid var(--line);border-radius:10px;padding:9px 14px;font:inherit;font-size:.85rem;color:var(--indigo);line-height:1.6;resize:none;background:var(--white);field-sizing:content;min-height:3.4em}
 .chat-input .field::placeholder{color:var(--indigo-2)}
-.chat-input .btn{padding:10px 18px;font-size:.9rem;border-radius:10px}
-.chat-input .btn:disabled{background:#C9CDDD;cursor:default}
+.try{display:flex;align-items:center;justify-content:flex-end;gap:16px}
+.try p{font-size:.85rem;font-weight:700;color:var(--indigo);text-align:right;line-height:1.5}
+.try-btn{flex:none;background:var(--yellow);color:var(--indigo);font-size:1.1rem;padding:16px 30px;border-radius:12px;box-shadow:0 0 0 0 rgba(255,210,31,.8)}
+.try-btn:hover{background:#FFC800}
+.try-btn:disabled{background:#E6E8F0;color:var(--indigo-2);box-shadow:none;cursor:default;animation:none}
+@media (prefers-reduced-motion:no-preference){.try-btn:not(:disabled){animation:ring 1.8s ease-out infinite}@keyframes ring{to{box-shadow:0 0 0 12px rgba(255,210,31,0)}}}
+@media (max-width:480px){.try{flex-direction:column;align-items:stretch}.try p{text-align:left}.try-btn{width:100%}}
+html:lang(ja) .hero h1{font-size:clamp(1.9rem,4vw,3.2rem)}
+@media (max-width:360px){html:lang(ja) .hero h1{font-size:1.65rem}}
 @media (prefers-reduced-motion:no-preference){.chat-body > .in{animation:rise .3s ease-out}@keyframes rise{from{opacity:0;transform:translateY(6px)}}}
 @media (prefers-reduced-motion:reduce){.thinking{animation:none;color:var(--indigo-2)}}
 @media (max-width:900px){.mu{grid-template-columns:1fr;gap:40px}}
@@ -303,7 +310,10 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
           </div>
           <div class="chat-input">
             <textarea class="field" id="muInput" rows="8" readonly data-i18n="mu.text" data-i18n-label="mu.inputLabel" data-i18n-ph="mu.ph"></textarea>
-            <button class="btn" type="button" id="sumBtn" data-i18n="mu.run"></button>
+            <div class="try">
+              <p data-i18n="mu.tryHint"></p>
+              <button class="btn try-btn" type="button" id="sumBtn" data-i18n="mu.run"></button>
+            </div>
           </div>
         </div>
       </div>
@@ -424,14 +434,17 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
   var sumBtn = document.getElementById('sumBtn'), muInput = document.getElementById('muInput');
   function $(id) { return document.getElementById(id); }
   function setBtn(key) { sumBtn.dataset.i18n = key; sumBtn.textContent = I18N[document.documentElement.lang][key]; }
+  var tryHint = document.querySelector('.try p');
   sumBtn.addEventListener('click', function () {
     if (sumBtn.dataset.i18n === 'mu.again') {
       ['askMsg', 'thinkMsg', 'sumMsg'].forEach(function (id) { $(id).hidden = true; });
       $('chatEmpty').hidden = false;
       muInput.value = muInput.defaultValue;
       setBtn('mu.run');
+      tryHint.hidden = false;
       return;
     }
+    tryHint.hidden = true;
     var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
     sumBtn.disabled = true;
     $('chatEmpty').hidden = true;
