@@ -15,7 +15,7 @@ var I18N = {
     'ft.privacy': '個人情報保護方針',
     'pp.title': '個人情報保護方針',
     'pp.back': 'トップページへ戻る',
-    'pp.body': '<p>AXIRRIA DIGITAL VIETNAM COMPANY LIMITED（以下「当社」）は、お客様の個人情報を適切に取り扱うことを社会的責務と考え、以下の方針に基づき個人情報の保護に努めます。</p><h2>1. 取得する個人情報</h2><p>お問い合わせフォーム、メール、Zalo等を通じて、氏名、会社名、メールアドレス、お問い合わせ内容等を取得します。</p><h2>2. 利用目的</h2><ul><li>お問い合わせへの回答およびご連絡</li><li>当社サービスのご案内、お見積り、契約の履行</li><li>サービス品質の向上</li></ul><h2>3. 第三者への提供</h2><p>法令に基づく場合を除き、ご本人の同意なく個人情報を第三者に提供しません。</p><h2>4. 取り扱いの委託</h2><p>フォーム送信サービス等、利用目的の達成に必要な範囲で、個人情報の取り扱いを外部事業者に委託する場合があります。その場合は、委託先を適切に監督します。</p><h2>5. 安全管理</h2><p>不正アクセス、紛失、漏えい等を防ぐため、必要かつ適切な安全管理措置を講じます。</p><h2>6. 開示・訂正・削除等のご請求</h2><p>ご本人から個人情報の開示、訂正、利用停止、削除等のご請求があった場合は、ご本人であることを確認したうえで、関係法令に従い速やかに対応します。</p><h2>7. 関係法令の遵守</h2><p>当社は、ベトナムの個人データ保護に関する法令、および日本のお客様の個人情報については日本の個人情報保護法の趣旨を踏まえ、適切に取り扱います。</p><h2>8. お問い合わせ窓口</h2><p>AXIRRIA DIGITAL VIETNAM COMPANY LIMITED<br>ベトナム タインホア省 サムソン坊<br>メール：<a href="mailto:{{cfg.email}}">{{cfg.email}}</a></p><h2>9. 改定</h2><p>本方針は必要に応じて改定することがあります。改定後の内容は、本ページに掲載した時点から効力を生じます。</p><p class="pp-date">制定日：2026年9月28日</p>',
+    'pp.body': '<p>AXIRRIA DIGITAL VIETNAM COMPANY LIMITED（以下「当社」）は、お客様の個人情報を適切に取り扱うことを社会的責務と考え、以下の方針に基づき個人情報の保護に努めます。</p><h2>1. 取得する個人情報</h2><p>お問い合わせフォームやメールを通じて、氏名、会社名、メールアドレス、お問い合わせ内容等を取得します。</p><h2>2. 利用目的</h2><ul><li>お問い合わせへの回答およびご連絡</li><li>当社サービスのご案内、お見積り、契約の履行</li><li>サービス品質の向上</li></ul><h2>3. 第三者への提供</h2><p>法令に基づく場合を除き、ご本人の同意なく個人情報を第三者に提供しません。</p><h2>4. 取り扱いの委託</h2><p>フォーム送信サービス等、利用目的の達成に必要な範囲で、個人情報の取り扱いを外部事業者に委託する場合があります。その場合は、委託先を適切に監督します。</p><h2>5. 安全管理</h2><p>不正アクセス、紛失、漏えい等を防ぐため、必要かつ適切な安全管理措置を講じます。</p><h2>6. 開示・訂正・削除等のご請求</h2><p>ご本人から個人情報の開示、訂正、利用停止、削除等のご請求があった場合は、ご本人であることを確認したうえで、関係法令に従い速やかに対応します。</p><h2>7. 関係法令の遵守</h2><p>当社は、ベトナムの個人データ保護に関する法令、および日本のお客様の個人情報については日本の個人情報保護法の趣旨を踏まえ、適切に取り扱います。</p><h2>8. お問い合わせ窓口</h2><p>AXIRRIA DIGITAL VIETNAM COMPANY LIMITED<br>ベトナム タインホア省 サムソン坊<br>メール：<a href="mailto:{{cfg.email}}">{{cfg.email}}</a></p><h2>9. 改定</h2><p>本方針は必要に応じて改定することがあります。改定後の内容は、本ページに掲載した時点から効力を生じます。</p><p class="pp-date">制定日：2026年9月28日</p>',
     'nav.menu': 'メニューを開く',
     'nav.services': 'サービス',
     'nav.munemo': 'Munemo',
@@ -105,14 +105,14 @@ var I18N = {
     'co.info': '<dt>会社名</dt><dd>AXIRRIA DIGITAL VIETNAM COMPANY LIMITED</dd><dt>設立</dt><dd>2026年9月</dd><dt>代表者</dt><dd>代表取締役 <span class="nb">Van Nhat Duy</span> <span class="nb">（ヴァン・ニャット・ズイ）</span></dd><dt>共同創業者</dt><dd><span class="nb">Tsuchida Haruka</span> <span class="nb">（土田 陽日）</span></dd><dt>資本金</dt><dd>100,000,000 VND</dd><dt>所在地</dt><dd>ベトナム タインホア省 サムソン坊<br><small class="nb">Sam Son Ward, Thanh Hoa Province</small></dd><dt>事業内容</dt><dd>AIプロダクトの開発・販売、AI導入コンサルティング、オフショア開発</dd>',
 
     'ct.title': 'ご相談はお気軽に',
-    'ct.lead': 'メール、Zalo、フォームのどれからでも受け付けています。1営業日以内にお返事します。',
+    'ct.lead': 'メールまたは下のフォームからお問い合わせください。1営業日以内にお返事します。',
     'ct.mail': 'メール',
     'f.name': 'お名前（必須）', 'f.company': '会社名', 'f.email': 'メールアドレス（必須）', 'f.topic': 'ご相談内容', 'f.msg': 'メッセージ（必須）',
     'f.topics': '<option>Munemo について</option><option>AI導入・ルール策定</option><option>AIプロダクト開発</option><option>オフショア開発</option><option>その他</option>',
     'f.send': '送信する',
     'f.sending': '送信しています…',
     'f.ok': '送信しました。1営業日以内に担当者からご連絡します。',
-    'f.err': '送信できませんでした。メールまたは Zalo からご連絡ください。',
+    'f.err': '送信できませんでした。お手数ですが、メールでご連絡ください。',
     'ft.partner': 'パートナー：有限会社アクシリア（日本）'
   },
 
@@ -130,7 +130,7 @@ var I18N = {
     'ft.privacy': 'Privacy Policy',
     'pp.title': 'Privacy Policy',
     'pp.back': 'Back to home',
-    'pp.body': '<p>AXIRRIA DIGITAL VIETNAM COMPANY LIMITED ("we") treats the proper handling of personal information as a social responsibility and protects it according to the policy below.</p><h2>1. Information we collect</h2><p>Through our contact form, email, Zalo and similar channels, we collect your name, company name, email address and the content of your inquiry.</p><h2>2. How we use it</h2><ul><li>To answer and follow up on your inquiry</li><li>To introduce our services, prepare estimates and fulfil contracts</li><li>To improve our services</li></ul><h2>3. Sharing with third parties</h2><p>We do not share personal information with third parties without your consent, except where required by law.</p><h2>4. Service providers</h2><p>We may entrust personal information to service providers, such as our form delivery service, only as needed for the purposes above, and we supervise them appropriately.</p><h2>5. Security</h2><p>We take necessary and appropriate measures to prevent unauthorized access, loss and leakage of personal information.</p><h2>6. Access, correction and deletion</h2><p>If you ask to access, correct, stop using or delete your personal information, we will verify your identity and respond promptly in line with applicable law.</p><h2>7. Applicable law</h2><p>We handle personal information in line with Vietnamese personal data protection law and, for clients in Japan, the principles of Japan’s Act on the Protection of Personal Information.</p><h2>8. Contact</h2><p>AXIRRIA DIGITAL VIETNAM COMPANY LIMITED<br>Sam Son Ward, Thanh Hoa Province, Vietnam<br>Email: <a href="mailto:{{cfg.email}}">{{cfg.email}}</a></p><h2>9. Changes</h2><p>We may update this policy as needed. Changes take effect when they are posted on this page.</p><p class="pp-date">Established: September 28, 2026</p>',
+    'pp.body': '<p>AXIRRIA DIGITAL VIETNAM COMPANY LIMITED ("we") treats the proper handling of personal information as a social responsibility and protects it according to the policy below.</p><h2>1. Information we collect</h2><p>Through our contact form and email, we collect your name, company name, email address and the content of your inquiry.</p><h2>2. How we use it</h2><ul><li>To answer and follow up on your inquiry</li><li>To introduce our services, prepare estimates and fulfil contracts</li><li>To improve our services</li></ul><h2>3. Sharing with third parties</h2><p>We do not share personal information with third parties without your consent, except where required by law.</p><h2>4. Service providers</h2><p>We may entrust personal information to service providers, such as our form delivery service, only as needed for the purposes above, and we supervise them appropriately.</p><h2>5. Security</h2><p>We take necessary and appropriate measures to prevent unauthorized access, loss and leakage of personal information.</p><h2>6. Access, correction and deletion</h2><p>If you ask to access, correct, stop using or delete your personal information, we will verify your identity and respond promptly in line with applicable law.</p><h2>7. Applicable law</h2><p>We handle personal information in line with Vietnamese personal data protection law and, for clients in Japan, the principles of Japan’s Act on the Protection of Personal Information.</p><h2>8. Contact</h2><p>AXIRRIA DIGITAL VIETNAM COMPANY LIMITED<br>Sam Son Ward, Thanh Hoa Province, Vietnam<br>Email: <a href="mailto:{{cfg.email}}">{{cfg.email}}</a></p><h2>9. Changes</h2><p>We may update this policy as needed. Changes take effect when they are posted on this page.</p><p class="pp-date">Established: September 28, 2026</p>',
     'nav.menu': 'Open menu',
     'nav.services': 'Services',
     'nav.munemo': 'Munemo',
@@ -220,14 +220,14 @@ var I18N = {
     'co.info': '<dt>Company</dt><dd>AXIRRIA DIGITAL VIETNAM COMPANY LIMITED</dd><dt>Founded</dt><dd>September 2026</dd><dt>CEO</dt><dd>Van Nhat Duy</dd><dt>Co-founder</dt><dd>Tsuchida Haruka</dd><dt>Capital</dt><dd>100,000,000 VND</dd><dt>Address</dt><dd>Sam Son Ward, Thanh Hoa Province, Vietnam</dd><dt>Business</dt><dd>AI product development and sales, AI adoption consulting, offshore development</dd>',
 
     'ct.title': 'Talk to us',
-    'ct.lead': 'Email, Zalo or the form below all reach the same team. We reply within one business day.',
+    'ct.lead': 'Email us or use the form below. We reply within one business day.',
     'ct.mail': 'Email',
     'f.name': 'Name (required)', 'f.company': 'Company', 'f.email': 'Email (required)', 'f.topic': 'Topic', 'f.msg': 'Message (required)',
     'f.topics': '<option>Munemo</option><option>AI adoption and policy</option><option>AI product development</option><option>Offshore development</option><option>Other</option>',
     'f.send': 'Send message',
     'f.sending': 'Sending…',
     'f.ok': 'Message sent. We will reply within one business day.',
-    'f.err': 'The message could not be sent. Please email us or message us on Zalo.',
+    'f.err': 'The message could not be sent. Please email us instead.',
     'ft.partner': 'Partner: Axirria Co., Ltd. (Japan)'
   }
 };

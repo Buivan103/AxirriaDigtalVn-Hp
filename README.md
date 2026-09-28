@@ -5,7 +5,7 @@ Static site, Japanese at `/` and English at `/en/`. Pages are pre-rendered so th
 ## Files
 - `src/index.html`, `src/privacy.html` — page templates (`data-i18n="key"` + `{{placeholders}}`)
 - `i18n.js` — all copy, JA and EN. Also loaded at runtime for demo/form messages.
-- `site.config.json` — site URL, email, Zalo, form endpoint
+- `site.config.json` — site URL, email, form endpoint, Munemo link
 - `style.css`, `main.js` — shared styles and interactions
 - `build.js` — writes `index.html`, `en/index.html`, `privacy.html`, `en/privacy.html`
 - `og.png` — share image, rendered from `src/og.html`
@@ -29,7 +29,7 @@ Regenerate `og.png` after changing the headline (server running):
 ```
 
 ## Before going live
-- `site.config.json`: real `email`, `zaloId` / `zaloLabel`, `formEndpoint` (Formspree form ID or your own API), the final `siteUrl` (used for canonical, hreflang and OGP), and `munemoUrl` (currently axirria.co.jp until Munemo has its own page).
+- `site.config.json`: real `email`, `formEndpoint` (Formspree form ID or your own API), the final `siteUrl` (used for canonical, hreflang and OGP), and `munemoUrl` (currently axirria.co.jp until Munemo has its own page).
 - `i18n.js` `cs.1` / `cs.2`: the case studies are **samples** (tagged サンプル事例). Replace with real, approved cases or remove the section from `src/index.html`.
 - `i18n.js` `pp.body`: privacy policy is a template — have it reviewed (Vietnam Decree 13/2023/ND-CP, Japan APPI).
 - `i18n.js` `nw.items`: news list.
