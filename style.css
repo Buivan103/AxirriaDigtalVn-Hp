@@ -30,9 +30,11 @@ header{background:var(--yellow)}
 .nav{display:flex;align-items:center;gap:32px;height:76px}
 .logo,.ft-logo{display:flex;align-items:center;gap:12px;margin-right:auto;text-decoration:none}
 .mark{display:block;flex:none}
-.lk{display:flex;flex-direction:column;line-height:1;font-family:var(--display)}
-.logo .lk{--dot:var(--white)}
-.logo small{font-weight:500;font-size:.8rem;letter-spacing:.07em;margin-top:5px}
+/* Lockup: "ai" mark + axirria digital vietnam on one line */
+.nm{display:flex;align-items:baseline;gap:.3em;font-family:var(--display);font-size:1.45rem;line-height:1;letter-spacing:-.015em;white-space:nowrap}
+.nm .wm{font-size:1em}
+.nm .r{font-weight:500}
+.logo .nm{--dot:var(--white)}
 /* Wordmark: dotless i + square dots. Small dot = 0.5 DEV, big dot = 1 AI agent */
 .wm{font-family:var(--display);font-weight:800;font-size:2.1rem;letter-spacing:-.02em;line-height:1;display:inline-flex;align-items:baseline}
 .wm i{font-style:normal;position:relative;display:inline-block}
@@ -45,9 +47,11 @@ header{background:var(--yellow)}
 .lang{display:flex;background:rgba(30,42,90,.1);border-radius:6px;padding:3px}
 .lang a{font-size:.82rem;font-weight:700;padding:4px 10px;border-radius:4px;color:var(--indigo-2);text-decoration:none;white-space:nowrap}
 .lang a[aria-current]{background:var(--white);color:var(--indigo)}
-@media (max-width:900px){.menu{display:none}}
+@media (max-width:980px){.menu{display:none}}
 .logo{white-space:nowrap}
-@media (max-width:420px){.nav{gap:12px}.logo .wm{font-size:1.6rem}.logo small{font-size:.66rem}.logo .mark{width:38px;height:38px}.logo{gap:9px}}
+.menu a{white-space:nowrap}
+@media (max-width:1120px){.nav{gap:22px}.menu{gap:20px}.logo .nm{flex-direction:column;align-items:flex-start;gap:3px;font-size:1.3rem}.logo .nm .r{font-size:.8em}}
+@media (max-width:520px){.nav{gap:12px}.logo .nm{flex-direction:column;align-items:flex-start;gap:3px;font-size:1.3rem}.logo .nm .r{font-size:.8em}.logo .mark{width:40px;height:40px}.logo{gap:10px}}
 
 /* hero: the estimate sheet is the one memorable element */
 .hero{background:var(--yellow);padding:56px 0 96px}
@@ -235,8 +239,7 @@ footer{background:var(--indigo);color:#C9CEE3;padding:28px 0;font-size:.85rem}
 footer .wrap{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px 24px}
 .ft-logo{color:var(--white)}
 .ft-logo .mark{width:36px;height:36px;border-radius:8px;box-shadow:0 0 0 1px rgba(255,255,255,.25)}
-.ft-logo .wm{font-size:1.5rem}
-.ft-logo small{font-family:var(--display);font-size:.66rem;letter-spacing:.07em;margin-top:4px}
+.ft-logo .nm{font-size:1.2rem}
 
 /* case studies */
 .cases{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:48px}
