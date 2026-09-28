@@ -4,6 +4,44 @@
   var dict = I18N[document.documentElement.lang] || I18N.ja;
   function $(id) { return document.getElementById(id); }
 
+  // Header shadow once the page scrolls
+  var header = document.querySelector('header');
+  var onScroll = function () { header.classList.toggle('scrolled', scrollY > 8); };
+  addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+  // Scroll reveal. Siblings in the same parent are staggered.
+  var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if ('IntersectionObserver' in window && !reduce) {
+    document.documentElement.classList.add('js');
+    var targets = document.querySelectorAll('.block h2, .block .sub, .rows article, .mu > div, .roles > div, .day, .tbl, .steps li, .case, .partner blockquote, .partner dl, .news li, dl.info, .ways > a, #contactForm, .pp');
+    targets.forEach(function (el) {
+      var sibs = [].filter.call(el.parentNode.children, function (c) { return c.matches(el.tagName) && [].indexOf.call(targets, c) > -1; });
+      el.setAttribute('data-reveal', '');
+      el.style.setProperty('--d', Math.min(sibs.indexOf(el), 5) * 90 + 'ms');
+    });
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (!e.isIntersecting) return;
+        e.target.classList.add('shown');
+        io.unobserve(e.target);
+        var c = e.target.querySelector('.count');
+        if (c) countUp(c);
+      });
+    }, { rootMargin: '0px 0px -8% 0px', threshold: 0.12 });
+    targets.forEach(function (el) { io.observe(el); });
+  }
+  function countUp(el) {
+    var to = +el.dataset.to, t0 = null;
+    el.textContent = '0';
+    requestAnimationFrame(function step(t) {
+      t0 = t0 || t;
+      var p = Math.min((t - t0) / 1100, 1);
+      el.textContent = Math.round(to * (1 - Math.pow(1 - p, 3)));
+      if (p < 1) requestAnimationFrame(step);
+    });
+  }
+
   // Mobile menu
   var menuBtn = document.querySelector('.menu-btn');
   if (menuBtn) {
@@ -24,7 +62,6 @@
   var sumBtn = $('sumBtn');
   if (sumBtn) {
     sumBtn.addEventListener('click', function () {
-      var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
       $('chatInput').hidden = true;
       $('chatEmpty').hidden = true;
       $('askMsg').hidden = false;
