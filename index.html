@@ -71,7 +71,7 @@ h1 span,h2 span{display:inline-block}
 .split i{display:block;height:100%}
 .split .dev{background:var(--indigo)}
 .split .ai{background:var(--yellow)}
-.split .loop{background:repeating-linear-gradient(-45deg,var(--yellow) 0 6px,var(--yellow-soft) 6px 12px)}
+.loop{background:repeating-linear-gradient(-45deg,var(--yellow) 0 6px,var(--yellow-soft) 6px 12px)}
 .sheet td small{display:block;font-size:.75rem;color:var(--indigo-2)}
 .sheet tfoot td{border-top:2px solid var(--indigo);font-weight:700}
 .sheet tfoot td.h{font-size:1.5rem}
@@ -101,8 +101,8 @@ h1 span,h2 span{display:inline-block}
 
 /* munemo */
 .mu{display:grid;grid-template-columns:.9fr 1.1fr;gap:64px;align-items:start;margin-top:48px}
-.mu ul{list-style:none;margin:0 0 32px}
-.mu li{padding:10px 0;border-bottom:1px solid var(--line)}
+.mu > div:first-child ul{list-style:none;margin:0 0 32px}
+.mu > div:first-child li{padding:10px 0;border-bottom:1px solid var(--line)}
 /* Munemo chat demo (bubble/avatar pattern from the CDP AI chat) */
 .chat{background:var(--white);border:1px solid var(--line);border-radius:14px;overflow:hidden;box-shadow:0 16px 40px -24px rgba(30,42,90,.35)}
 .chat-head{display:flex;align-items:center;gap:10px;padding:14px 18px;border-bottom:1px solid var(--line)}
@@ -121,10 +121,18 @@ h1 span,h2 span{display:inline-block}
 @keyframes shimmer{from{background-position:200% center}to{background-position:-200% center}}
 .sumcard{background:var(--white);border:1px solid var(--line);border-radius:0 14px 14px 14px;overflow:hidden;flex:1}
 .sumcard h3{font-family:var(--body);font-size:.85rem;padding:9px 14px;background:var(--yellow-soft);border-bottom:1px solid var(--line)}
-.sumcard dl{display:grid;grid-template-columns:auto 1fr;gap:8px 16px;padding:12px 14px;font-size:.9rem;line-height:1.6}
-.sumcard dt{color:var(--indigo-2);font-size:.82rem;padding-top:2px}
-.chat-input{display:flex;gap:10px;align-items:center;padding:12px 14px;border-top:1px solid var(--line)}
-.chat-input .field{flex:1;min-width:0;border:1px solid var(--line);border-radius:10px;padding:9px 14px;font-size:.9rem;color:var(--indigo-2);line-height:1.5}
+.sumcard ul,.sumcard ol{padding:12px 14px 14px;font-size:.9rem;line-height:1.6;display:grid;gap:6px}
+.sumcard ul{padding-left:30px}
+.sumcard ul li::marker{color:var(--indigo-2)}
+.sumcard h3.next{background:var(--indigo);color:var(--white);border-top:1px solid var(--line)}
+.sumcard ol{list-style:none}
+.sumcard ol li{display:flex;gap:10px;align-items:flex-start}
+.sumcard ol li::before{content:"";flex:none;width:14px;height:14px;margin-top:4px;border:2px solid var(--indigo);border-radius:3px}
+.bubble.long{max-width:100%}
+.clamp{display:-webkit-box;-webkit-line-clamp:5;-webkit-box-orient:vertical;overflow:hidden;font-size:.85rem;opacity:.95}
+.bubble.long small{display:block;color:var(--yellow);margin:8px 0 0;font-size:.75rem}
+.chat-input{display:flex;gap:10px;align-items:flex-end;padding:12px 14px;border-top:1px solid var(--line)}
+.chat-input .field{flex:1;min-width:0;border:1px solid var(--line);border-radius:10px;padding:9px 14px;font:inherit;font-size:.85rem;color:var(--indigo);line-height:1.6;resize:none;background:var(--white)}
 .chat-input .btn{padding:10px 18px;font-size:.9rem;border-radius:10px}
 .chat-input .btn:disabled{background:#C9CDDD;cursor:default}
 @media (prefers-reduced-motion:no-preference){.chat-body > .in{animation:rise .3s ease-out}@keyframes rise{from{opacity:0;transform:translateY(6px)}}}
@@ -141,7 +149,28 @@ h1 span,h2 span{display:inline-block}
 .role ul{list-style:none;margin-top:14px}
 .role li{padding:6px 0;border-top:1px solid rgba(255,255,255,.2)}
 .role.ai li{border-top-color:rgba(30,42,90,.2)}
+.role.ai{display:flex;flex-direction:column;gap:14px}
+.ai-top{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+.live{display:inline-flex;align-items:center;gap:8px;font-size:.8rem;font-weight:700;background:var(--indigo);color:var(--yellow);padding:5px 12px;border-radius:99px}
+.live i{width:8px;height:8px;border-radius:50%;background:var(--yellow);box-shadow:0 0 0 0 rgba(255,210,31,.7)}
+@media (prefers-reduced-motion:no-preference){.live i{animation:pulse 1.8s ease-out infinite}@keyframes pulse{to{box-shadow:0 0 0 9px rgba(255,210,31,0)}}}
+.ai-body{display:grid;grid-template-columns:1fr auto;gap:24px;align-items:end;flex:1}
+.ai-body ul{margin-top:0}
+.clock{text-align:right}
+.clock strong{display:block;font-family:var(--display);font-size:clamp(4.5rem,8vw,6.5rem);font-weight:800;line-height:.85;letter-spacing:-.04em}
+.clock small{font-size:.38em;letter-spacing:0;margin-left:2px}
+.clock span{display:block;font-weight:700;font-size:.9rem;margin-top:10px}
 @media (max-width:700px){.roles{grid-template-columns:1fr}}
+@media (max-width:480px){.ai-body{grid-template-columns:1fr}.clock{text-align:left}}
+.day{margin-top:24px;border:1px solid var(--line);border-radius:10px;padding:24px 28px}
+.day h3{font-size:1.05rem;margin-bottom:16px}
+.lane{display:grid;grid-template-columns:8em 1fr;align-items:center;gap:12px;margin-bottom:10px;font-size:.88rem}
+.track{position:relative;height:16px;background:var(--paper);border-radius:3px}
+.track i{position:absolute;top:0;bottom:0;border-radius:3px}
+.track .dev{background:var(--indigo)}
+.axis{display:flex;justify-content:space-between;margin-left:calc(8em + 12px);font-size:.75rem;color:var(--indigo-2)}
+.day p{margin-top:14px;color:var(--indigo-2);font-size:.92rem;max-width:44em}
+@media (max-width:480px){.day{padding:20px 18px}.lane{grid-template-columns:6.5em 1fr;font-size:.8rem}.axis{margin-left:calc(6.5em + 12px);font-size:.68rem}.axis span:nth-child(even){visibility:hidden}}
 .tbl{overflow-x:auto;margin-top:56px}
 table.cmp{width:100%;border-collapse:collapse}
 .nb{display:inline-block}
@@ -220,7 +249,6 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
         <p data-i18n="hero.lead"></p>
         <div class="cta">
           <a class="btn" href="#contact" data-i18n="hero.cta1"></a>
-          <a class="textlink" href="#offshore" data-i18n="hero.cta2"></a>
         </div>
       </div>
       <div class="sheet" role="figure" aria-labelledby="sheetTitle">
@@ -264,13 +292,13 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
         <div class="chat">
           <div class="chat-head"><span class="av ai">M</span><strong>Munemo<small data-i18n="mu.hint"></small></strong></div>
           <div class="chat-body" aria-live="polite">
-            <div data-i18n="mu.log" style="display:grid;gap:14px"></div>
-            <div class="msg me in" id="askMsg" hidden><div class="bubble" data-i18n="mu.ask"></div></div>
+            <div class="msg" id="chatEmpty"><span class="av ai">M</span><div class="bubble" data-i18n="mu.empty"></div></div>
+            <div class="msg me in" id="askMsg" hidden><div class="bubble long"><div class="clamp" data-i18n="mu.text"></div><small data-i18n="mu.len"></small></div></div>
             <div class="msg in" id="thinkMsg" hidden><span class="av ai">M</span><div class="thinking" data-i18n="mu.thinking"></div></div>
             <div class="msg in" id="sumMsg" hidden><span class="av ai">M</span><div class="sumcard" data-i18n="mu.sum"></div></div>
           </div>
           <div class="chat-input">
-            <div class="field" data-i18n="mu.ask"></div>
+            <textarea class="field" id="muInput" rows="3" readonly data-i18n="mu.text" data-i18n-label="mu.inputLabel"></textarea>
             <button class="btn" type="button" id="sumBtn" data-i18n="mu.run"></button>
           </div>
         </div>
@@ -284,7 +312,17 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
       <p class="sub" data-i18n="off.lead"></p>
       <div class="roles">
         <div class="role dev"><h3><span>0.5</span><em style="font-style:normal" data-i18n="off.dev"></em></h3><ul data-i18n="off.devl"></ul></div>
-        <div class="role ai"><h3><span>1</span><em style="font-style:normal" data-i18n="off.agent"></em></h3><ul data-i18n="off.agentl"></ul></div>
+        <div class="role ai">
+          <div class="ai-top"><h3><span>1</span><em style="font-style:normal" data-i18n="off.agent"></em></h3><p class="live"><i></i><span data-i18n="off.live"></span></p></div>
+          <div class="ai-body"><ul data-i18n="off.agentl"></ul><div class="clock"><strong>24<small>h</small></strong><span data-i18n="off.nonstop"></span></div></div>
+        </div>
+      </div>
+      <div class="day" role="figure" aria-labelledby="dayTitle">
+        <h3 id="dayTitle" data-i18n="day.title"></h3>
+        <div class="lane"><span data-i18n="est.dev"></span><div class="track"><i class="dev" style="left:37.5%;width:37.5%"></i></div></div>
+        <div class="lane"><span data-i18n="est.ai"></span><div class="track"><i class="loop" style="left:0;width:100%"></i></div></div>
+        <div class="axis" aria-hidden="true"><span>0:00</span><span>6:00</span><span>12:00</span><span>18:00</span><span>24:00</span></div>
+        <p data-i18n="day.note"></p>
       </div>
       <div class="tbl">
         <table class="cmp">
@@ -368,6 +406,7 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
       var v = dict[el.dataset.i18n];
       if (v != null) el.innerHTML = v;
     });
+    document.querySelectorAll('[data-i18n-label]').forEach(function (el) { el.setAttribute('aria-label', dict[el.dataset.i18nLabel]); });
     buttons.forEach(function (b) { b.setAttribute('aria-pressed', b.dataset.lang === lang); });
     try { localStorage.setItem('lang', lang); } catch (e) {}
   }
@@ -382,7 +421,9 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
     var think = document.getElementById('thinkMsg');
     var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
     sumBtn.disabled = true;
+    document.getElementById('chatEmpty').hidden = true;
     document.getElementById('askMsg').hidden = false;
+    document.getElementById('muInput').value = '';
     think.hidden = false;
     setTimeout(function () {
       think.hidden = true;
