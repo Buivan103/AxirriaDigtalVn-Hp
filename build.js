@@ -64,11 +64,17 @@ function render(page, lang) {
   return html;
 }
 
+// Everything the site serves goes to dist/ (the deploy folder); sources stay out of it.
+const OUT = 'dist';
+const ASSETS = ['style.css', 'main.js', 'i18n.js', 'logo-mark.svg', 'og.png'];
+fs.rmSync(OUT, { recursive: true, force: true });
 for (const page of PAGES) {
   for (const lang of Object.keys(LANGS)) {
-    const out = path.join(LANGS[lang].dir, page.file || 'index.html');
-    fs.mkdirSync(path.dirname(out) || '.', { recursive: true });
+    const out = path.join(OUT, LANGS[lang].dir, page.file || 'index.html');
+    fs.mkdirSync(path.dirname(out), { recursive: true });
     fs.writeFileSync(out, render(page, lang));
     console.log('wrote', out);
   }
 }
+for (const f of ASSETS) fs.copyFileSync(f, path.join(OUT, f));
+console.log('copied', ASSETS.join(', '));
