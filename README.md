@@ -34,9 +34,9 @@ Regenerate `og.png` after changing the headline (serve the repo root, e.g. `pyth
 - `i18n.js` `pp.body`: privacy policy is a template — have it reviewed (Vietnam Decree 13/2023/ND-CP, Japan APPI).
 - `i18n.js` `nw.items`: news list.
 
-## Deploy (Cloudflare Pages)
-Workers & Pages → Create → Pages → Connect to Git → this repo.
+## Deploy (Cloudflare Workers)
+Workers & Pages → Create → Import a repository → this repo.
 - Build command: `node build.js`
-- Build output directory: `dist`
+- Deploy command: `npx wrangler deploy` (uses `wrangler.jsonc`, which serves `dist/`)
 
-Then Custom domains → add `axirriadigital.com` (and `www.axirriadigital.com`). Every push to `main` redeploys.
+Then Settings → Domains & Routes → add `axirriadigital.com` and `www.axirriadigital.com`. Every push to `main` redeploys.

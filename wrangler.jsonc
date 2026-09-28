@@ -1,0 +1,6 @@
+// Cloudflare Workers static site: serves the output of `node build.js`.
+{
+  "name": "axirriadigtalvn-hp",
+  "compatibility_date": "2026-09-01",
+  "assets": { "directory": "./dist" }
+}
