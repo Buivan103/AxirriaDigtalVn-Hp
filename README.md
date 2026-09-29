@@ -43,6 +43,10 @@ Workers & Pages → Create → Import a repository → this repo.
 Then Settings → Domains & Routes → add `axirriadigital.com` and `www.axirriadigital.com`. Every push to `main` redeploys.
 
 ### Contact form email
-The form posts to `/api/contact`; `worker.js` emails it via the Worker `send_email` binding (free when sending to verified Email Routing destination addresses).
-- Email Routing must be enabled on `axirriadigital.com`, and each recipient verified under Email Routing → Destination addresses.
-- Worker → Settings → Variables and Secrets → add secret `CONTACT_TO` = comma-separated recipients (kept out of the repo).
+The form posts to `/api/contact`; `worker.js` validates it (honeypot, per-IP rate limit) and forwards it to a Google Apps Script web app (`apps-script/Code.gs`), which sends the email from the Workspace account.
+1. script.google.com → New project → paste `apps-script/Code.gs`.
+2. Project Settings → Script properties: `TOKEN` (random string) and `RECIPIENTS` (e.g. `duy@axirriadigital.com,tsuchida@axirriadigital.com`).
+3. Deploy → New deployment → Web app, Execute as **Me**, Who has access **Anyone** → copy the `/exec` URL.
+4. Worker → Settings → Variables and Secrets: secret `GAS_URL` = that URL, secret `GAS_TOKEN` = same value as `TOKEN`.
+
+Recipients are addressed directly (not the `contact@` group) because Gmail hides group copies of mail sent by the account running the script.

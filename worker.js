@@ -1,13 +1,10 @@
 // Cloudflare Worker: serves the static site (dist/) and handles the contact form.
-// POST /api/contact -> emails the inquiry to the addresses in the CONTACT_TO secret
-// (comma-separated, each must be a verified Email Routing destination).
-const FROM = { email: 'noreply@axirriadigital.com', name: 'Axirria Digital Vietnam Website' };
+// POST /api/contact -> validated here, then emailed by the Google Apps Script web app
+// (apps-script/Code.gs). Secrets: GAS_URL (web app URL), GAS_TOKEN (shared token).
 const LIMITS = { name: 100, company: 200, email: 200, topic: 100, message: 5000 };
 
 const json = (status, body) =>
   new Response(JSON.stringify(body), { status, headers: { 'content-type': 'application/json' } });
-const oneLine = (s) => s.replace(/[\r\n]+/g, ' ').trim();
-const esc = (s) => s.replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c]);
 
 export function parseInquiry(form) {
   const get = (k) => String(form.get(k) ?? '').trim();
@@ -33,25 +30,18 @@ async function handleContact(request, env) {
   if (r.spam) return json(200, { ok: true });
   if (r.error) return json(400, { ok: false, error: r.error });
 
-  const d = r.data;
-  const to = String(env.CONTACT_TO || '').split(',').map((s) => s.trim()).filter(Boolean);
-  if (!to.length) return json(500, { ok: false, error: 'not configured' });
-
-  const rows = [['お名前 / Name', d.name], ['会社名 / Company', d.company || '-'], ['メール / Email', d.email],
-    ['ご相談内容 / Topic', d.topic || '-'], ['メッセージ / Message', d.message]];
+  // Hand off to the Google Apps Script mailer (apps-script/Code.gs). URL and token are Worker secrets.
+  if (!env.GAS_URL || !env.GAS_TOKEN) return json(500, { ok: false, error: 'not configured' });
   try {
-    await env.EMAIL.send({
-      from: FROM,
-      to,
-      replyTo: { email: d.email, name: oneLine(d.name) },
-      subject: oneLine(`[Webお問い合わせ] ${d.topic || 'お問い合わせ'} - ${d.name}`),
-      text: rows.map(([k, v]) => `${k}: ${v}`).join('\n\n'),
-      html: '<table cellpadding="6" style="border-collapse:collapse;font-family:sans-serif">' +
-        rows.map(([k, v]) => `<tr><th align="left" valign="top" style="white-space:nowrap">${esc(k)}</th><td style="white-space:pre-wrap">${esc(v)}</td></tr>`).join('') +
-        '</table>',
+    const res = await fetch(env.GAS_URL, {
+      method: 'POST',
+      headers: { 'content-type': 'application/json' },
+      body: JSON.stringify({ token: env.GAS_TOKEN, ...r.data }),
     });
+    const out = await res.json().catch(() => ({}));
+    if (!res.ok || !out.ok) throw new Error(out.error || `HTTP ${res.status}`);
   } catch (e) {
-    console.error('contact send failed', e.code, e.message);
+    console.error('contact send failed', e.message);
     return json(502, { ok: false, error: 'send failed' });
   }
   return json(200, { ok: true });

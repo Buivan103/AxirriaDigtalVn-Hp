@@ -1,10 +1,9 @@
 // Cloudflare Worker: serves dist/ (output of `node build.js`) and the contact form API (worker.js).
-// Secret CONTACT_TO (comma-separated verified destination addresses) is set in the dashboard.
+// Secrets GAS_URL and GAS_TOKEN (Google Apps Script mailer) are set in the dashboard.
 {
   "name": "axirriadigtalvn-hp",
   "main": "worker.js",
   "compatibility_date": "2026-09-01",
   "assets": { "directory": "./dist", "binding": "ASSETS" },
-  "send_email": [{ "name": "EMAIL" }],
   "ratelimits": [{ "name": "CONTACT_LIMIT", "namespace_id": "1001", "simple": { "limit": 3, "period": 60 } }]
 }
