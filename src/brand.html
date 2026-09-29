@@ -1,0 +1,22 @@
+<!doctype html><meta charset="utf-8">
+<!-- Source for brand/*.png. ?v=dark for white text, ?v=yellow for use on yellow, ?v=icon for the square mark. -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,800&display=block">
+<link rel="stylesheet" href="../style.css">
+<style>
+html,body{margin:0;background:transparent!important}
+.lock{display:inline-flex;align-items:center;gap:26px;padding:24px 28px;color:#1E2A5A;--dot:#FFD21F}
+.lock .mark{width:104px;height:104px}
+.lock .nm{font-size:64px}
+.dark .lock{color:#fff}
+.dark .lock .mark{border-radius:24px;box-shadow:0 0 0 2px rgba(255,255,255,.35)}
+.yellow .lock{--dot:#fff}
+.icon img{display:block;width:512px;height:512px}
+</style>
+<body>
+<div id="lock" class="lock"><img class="mark" src="../logo-mark.svg" alt=""><span class="nm"><span class="wm">ax<i>ı<b class="h"></b></i>rr<i>ı<b class="f"></b></i>a</span><span class="r">digital vietnam</span></span></div>
+<div id="icon" class="icon" hidden><img src="../logo-mark.svg" alt=""></div>
+<script>
+var v = new URLSearchParams(location.search).get('v');
+if (v === 'dark' || v === 'yellow') document.body.classList.add(v);
+if (v === 'icon') { document.getElementById('lock').hidden = true; document.getElementById('icon').hidden = false; }
+</script>
