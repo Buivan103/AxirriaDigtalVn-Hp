@@ -335,22 +335,19 @@ footer .wrap{display:flex;justify-content:space-between;align-items:center;flex-
 .faq summary::after{content:"+";position:absolute;right:8px;top:50%;transform:translateY(-50%);font-family:var(--display);font-size:1.4rem;font-weight:500;color:var(--indigo-2)}
 .faq details[open] summary::after{content:"−"}
 .faq details p{padding:0 40px 20px 0;color:var(--indigo-2)}
-/* optional price line in the sample estimate */
-.sheet tfoot tr.price td{border-top:1px solid var(--line);font-weight:700}
-.sheet tfoot tr.price td.h{font-size:1.15rem}
-.sheet tfoot tr.price small{display:block;font-weight:400;font-size:.75rem;color:var(--indigo-2)}
 
 /* pricing: smallest team plan */
 .plan{margin-top:72px;display:grid;grid-template-columns:1fr 1.2fr;gap:40px;align-items:center;background:var(--indigo);color:var(--white);border-radius:14px;padding:40px}
 .plan-kicker{font-size:.85rem;font-weight:700;color:var(--yellow)}
 .plan h3{font-size:1.5rem;margin:6px 0 14px}
-.plan-price{font-family:var(--display);font-size:1.1rem}
-.plan-price b{font-size:3.2rem;font-weight:800;color:var(--yellow);letter-spacing:-.02em;line-height:1}
-.plan-price small{font-size:.9rem;font-weight:500;margin-left:4px;color:#C9CEE3}
+.plan-price{font-size:1.2rem;font-weight:700}
+.plan-price small{display:block;font-size:.88rem;font-weight:400;margin-top:6px;color:#C9CEE3}
+.plan-mail{margin-top:14px}
+.plan-mail a{color:var(--yellow);font-family:var(--display);font-weight:700;font-size:1.1rem}
 .plan-parts{list-style:none;border-top:1px solid rgba(255,255,255,.2)}
 .plan-parts li{display:flex;justify-content:space-between;gap:16px;padding:12px 0;border-bottom:1px solid rgba(255,255,255,.2)}
 .plan-parts span{color:var(--yellow);font-weight:700;white-space:nowrap}
 .plan-note{font-size:.9rem;color:#C9CEE3;margin:14px 0 20px}
 .plan .btn{background:var(--yellow);color:var(--indigo)}
 .plan .btn:hover{background:#FFC800}
-@media (max-width:800px){.plan{grid-template-columns:1fr;gap:24px;padding:28px 22px}.plan-price b{font-size:2.6rem}}
+@media (max-width:800px){.plan{grid-template-columns:1fr;gap:24px;padding:28px 22px}}

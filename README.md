@@ -34,7 +34,7 @@ Regenerate `og.png` after changing the headline (serve the repo root, e.g. `pyth
 - `i18n.js` `cs.1` / `cs.2`: the case studies are **samples** (tagged サンプル事例). Replace with real, approved cases or remove the section from `src/index.html`.
 - `i18n.js` `pp.body`: privacy policy is a template — have it reviewed (Vietnam Decree 13/2023/ND-CP, Japan APPI).
 - `i18n.js` `nw.items`: news list.
-- `site.config.json` `plan`: smallest-team price (`devHoursPerMonth`, `monthlyJPY`). Drives the pricing block, the FAQ answer and the cost line of the 12h sample estimate.
+- `site.config.json` `plan.devHoursPerMonth`: engineer hours in the smallest team (used in the pricing block and FAQ). Prices are intentionally not published; quotes go through email/contact form.
 - `i18n.js` `faq.items`: FAQ answers (team size, review, security, small projects) — confirm they match how you actually work.
 
 ## Deploy (Cloudflare Workers)

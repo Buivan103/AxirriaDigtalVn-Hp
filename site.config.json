@@ -4,7 +4,6 @@
   "formEndpoint": "/api/contact",
   "munemoUrl": "https://www.axirria.co.jp/",
   "plan": {
-    "devHoursPerMonth": 80,
-    "monthlyJPY": 500000
+    "devHoursPerMonth": 80
   }
 }
