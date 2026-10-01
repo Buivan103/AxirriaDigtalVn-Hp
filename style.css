@@ -267,7 +267,6 @@ footer .wrap{display:flex;justify-content:space-between;align-items:center;flex-
 /* case studies */
 .cases{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:48px}
 .case{background:var(--white);border:1px solid var(--line);border-radius:10px;padding:28px;display:flex;flex-direction:column;gap:10px}
-.case .tag{align-self:flex-start;font-size:.75rem;font-weight:700;background:var(--yellow-soft);border:1px solid var(--yellow);padding:2px 10px;border-radius:4px}
 .case .meta{font-size:.85rem;color:var(--indigo-2)}
 .case h3{font-size:1.25rem}
 .case .num{display:flex;flex-direction:column;border-top:2px solid var(--indigo);border-bottom:1px solid var(--line);padding:14px 0;margin:4px 0}
