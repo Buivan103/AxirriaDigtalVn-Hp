@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" role="img" aria-label="Axirria Digital Vietnam">
+  <!-- ADV monogram: Axirria (white) Digital (white) Vietnam (yellow) -->
+  <rect width="48" height="48" rx="11" fill="#1E2A5A"/>
+  <g transform="translate(24 24) scale(.78) translate(-27.5 -24)" fill="none" stroke-width="4.6" stroke-linejoin="round" stroke-linecap="round">
+    <path d="M8 34 13.5 14 19 34M10.4 27.5h6.2" stroke="#fff"/>
+    <path d="M23 14h2.5a8 10 0 0 1 0 20H23z" stroke="#fff"/>
+    <path d="M37 14l5 20 5-20" stroke="#FFD21F"/>
+  </g>
+</svg>

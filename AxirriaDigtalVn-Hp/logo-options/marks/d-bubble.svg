@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" role="img" aria-label="Axirria Digital Vietnam">
+  <!-- Chat bubble (AI conversation / Munemo) holding the i with its yellow dot -->
+  <rect width="48" height="48" rx="11" fill="#1E2A5A"/>
+  <path d="M16 9h16a7 7 0 0 1 7 7v10a7 7 0 0 1-7 7H20l-7 6v-6.6A7 7 0 0 1 9 26V16a7 7 0 0 1 7-7z" fill="#fff"/>
+  <rect x="22" y="21" width="4.5" height="8" rx="1" fill="#1E2A5A"/>
+  <rect x="21" y="13.5" width="6.5" height="6" rx="1" fill="#FFD21F"/>
+</svg>

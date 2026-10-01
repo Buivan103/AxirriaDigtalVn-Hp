@@ -34,8 +34,6 @@ Regenerate `og.png` after changing the headline (serve the repo root, e.g. `pyth
 - `i18n.js` `cs.1` / `cs.2`: the case studies are **samples** (tagged サンプル事例). Replace with real, approved cases or remove the section from `src/index.html`.
 - `i18n.js` `pp.body`: privacy policy is a template — have it reviewed (Vietnam Decree 13/2023/ND-CP, Japan APPI).
 - `i18n.js` `nw.items`: news list.
-- `site.config.json` `hourlyRateJPY`: set the hourly rate (number, JPY, excl. tax) to show the cost line under the 12h sample estimate; `null` hides it.
-- `i18n.js` `faq.items`: FAQ answers (team size, review, security, small projects) — confirm they match how you actually work.
 
 ## Deploy (Cloudflare Workers)
 Workers & Pages → Create → Import a repository → this repo.

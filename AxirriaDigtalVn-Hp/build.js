@@ -44,13 +44,7 @@ function render(page, lang) {
     `<a href="${rel(LANGS[l].dir + page.dir)}" hreflang="${l}" lang="${l}"${l === lang ? ' aria-current="true"' : ''}>${l === 'ja' ? '日本語' : 'EN'}</a>`
   ).join('');
 
-  // Optional price line under the 12h sample estimate; shown only when hourlyRateJPY is set.
-  const EST_HOURS = 12; // keep in sync with the estimate table in src/index.html
-  const yen = (n) => '¥' + Math.round(n).toLocaleString('en-US');
-  const priceRow = cfg.hourlyRateJPY
-    ? `<tr class="price"><td colspan="2">${dict['est.price']}<small>${dict['est.rate']} ${yen(cfg.hourlyRateJPY)} × ${EST_HOURS}h</small></td><td class="h">${yen(cfg.hourlyRateJPY * EST_HOURS)}</td></tr>`
-    : '';
-  const vars = { lang, base, head, langSwitch, priceRow, homeHref: rel(LANGS[lang].dir), privacyHref: rel(LANGS[lang].dir + 'privacy/') };
+  const vars = { lang, base, head, langSwitch, homeHref: rel(LANGS[lang].dir), privacyHref: rel(LANGS[lang].dir + 'privacy/') };
   for (const [k, v] of Object.entries(cfg)) vars['cfg.' + k] = v;
 
   let html = fs.readFileSync(page.src, 'utf8');
