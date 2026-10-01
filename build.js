@@ -44,14 +44,16 @@ function render(page, lang) {
     `<a href="${rel(LANGS[l].dir + page.dir)}" hreflang="${l}" lang="${l}"${l === lang ? ' aria-current="true"' : ''}>${l === 'ja' ? '日本語' : 'EN'}</a>`
   ).join('');
 
-  // Optional price line under the 12h sample estimate; shown only when hourlyRateJPY is set.
+  // Pricing from site.config.json `plan` (smallest team, monthly). The 12h sample estimate shows
+  // its cost at the plan's effective hourly rate.
   const EST_HOURS = 12; // keep in sync with the estimate table in src/index.html
   const yen = (n) => '¥' + Math.round(n).toLocaleString('en-US');
-  const priceRow = cfg.hourlyRateJPY
-    ? `<tr class="price"><td colspan="2">${dict['est.price']}<small>${dict['est.rate']} ${yen(cfg.hourlyRateJPY)} × ${EST_HOURS}h</small></td><td class="h">${yen(cfg.hourlyRateJPY * EST_HOURS)}</td></tr>`
-    : '';
-  const vars = { lang, base, head, langSwitch, priceRow, homeHref: rel(LANGS[lang].dir), privacyHref: rel(LANGS[lang].dir + 'privacy/') };
-  for (const [k, v] of Object.entries(cfg)) vars['cfg.' + k] = v;
+  const { devHoursPerMonth: planHours, monthlyJPY } = cfg.plan;
+  const rate = monthlyJPY / planHours;
+  const priceRow = `<tr class="price"><td colspan="2">${dict['est.price']}<small>${dict['est.rate']} ${yen(rate)} × ${EST_HOURS}h</small></td><td class="h">${yen(rate * EST_HOURS)}</td></tr>`;
+  const planPrice = lang === 'ja' ? `${monthlyJPY / 10000}万円` : yen(monthlyJPY);
+  const vars = { lang, base, head, langSwitch, priceRow, 'plan.hours': planHours, 'plan.price': planPrice, homeHref: rel(LANGS[lang].dir), privacyHref: rel(LANGS[lang].dir + 'privacy/') };
+  for (const [k, v] of Object.entries(cfg)) if (typeof v !== 'object') vars['cfg.' + k] = v;
 
   let html = fs.readFileSync(page.src, 'utf8');
   // Fill empty elements marked data-i18n="key"; textarea content is escaped.

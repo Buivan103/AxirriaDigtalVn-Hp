@@ -3,5 +3,8 @@
   "email": "contact@axirriadigital.com",
   "formEndpoint": "/api/contact",
   "munemoUrl": "https://www.axirria.co.jp/",
-  "hourlyRateJPY": null
+  "plan": {
+    "devHoursPerMonth": 80,
+    "monthlyJPY": 500000
+  }
 }

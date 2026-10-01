@@ -14,7 +14,7 @@
   var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
   if ('IntersectionObserver' in window && !reduce) {
     document.documentElement.classList.add('js');
-    var targets = document.querySelectorAll('.block h2, .block .sub, .rows article, .mu > div, .roles > div, .day, .tbl, .steps li, .case, .half-note, .faq, .partner blockquote, .partner dl, .news li, dl.info, .ways > a, #contactForm, .pp');
+    var targets = document.querySelectorAll('.block h2, .block .sub, .rows article, .mu > div, .roles > div, .day, .tbl, .steps li, .case, .half-note, .plan, .faq, .partner blockquote, .partner dl, .news li, dl.info, .ways > a, #contactForm, .pp');
     targets.forEach(function (el) {
       var sibs = [].filter.call(el.parentNode.children, function (c) { return c.matches(el.tagName) && [].indexOf.call(targets, c) > -1; });
       el.setAttribute('data-reveal', '');
