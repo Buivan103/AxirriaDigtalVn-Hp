@@ -39,14 +39,19 @@ export function parseInquiry(form, now = Date.now()) {
 }
 
 // Optional Cloudflare Turnstile check, active only when the TURNSTILE_SECRET secret is set.
-async function turnstileOk(form, request, env) {
-  if (!env.TURNSTILE_SECRET) return true;
+// Returns '' when OK, otherwise Cloudflare's error codes (no secrets) for diagnosis.
+async function turnstileError(form, request, env) {
+  if (!env.TURNSTILE_SECRET) return '';
   const body = new FormData();
   body.set('secret', env.TURNSTILE_SECRET);
   body.set('response', String(form.get('cf-turnstile-response') || ''));
   body.set('remoteip', request.headers.get('cf-connecting-ip') || '');
   const r = await fetch('https://challenges.cloudflare.com/turnstile/v0/siteverify', { method: 'POST', body });
-  return (await r.json().catch(() => ({}))).success === true;
+  const out = await r.json().catch(() => ({}));
+  if (out.success === true) return '';
+  const codes = (out['error-codes'] || []).join(',') || `HTTP ${r.status}`;
+  console.error('turnstile failed:', codes);
+  return codes;
 }
 
 async function handleContact(request, env) {
@@ -58,7 +63,8 @@ async function handleContact(request, env) {
   }
   let form;
   try { form = await request.formData(); } catch { return json(400, { ok: false, error: 'bad request' }); }
-  if (!(await turnstileOk(form, request, env))) return json(400, { ok: false, error: 'captcha failed' });
+  const captcha = await turnstileError(form, request, env);
+  if (captcha) return json(400, { ok: false, error: 'captcha failed', codes: captcha });
   const r = parseInquiry(form);
   if (r.spam) { console.log('contact spam dropped:', r.spam); return json(200, { ok: true }); }
   if (r.error) return json(400, { ok: false, error: r.error });

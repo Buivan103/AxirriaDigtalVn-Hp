@@ -352,4 +352,4 @@ footer .wrap{display:flex;justify-content:space-between;align-items:center;flex-
 @media (max-width:800px){.plan{grid-template-columns:1fr;gap:24px;padding:28px 22px}}
 
 /* Turnstile widget inside the contact form */
-#contactForm .cf-turnstile{min-height:65px}
+#contactForm .cf-turnstile{min-height:65px;width:100%}
