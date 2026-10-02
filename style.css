@@ -350,3 +350,6 @@ footer .wrap{display:flex;justify-content:space-between;align-items:center;flex-
 .plan .btn{background:var(--yellow);color:var(--indigo)}
 .plan .btn:hover{background:#FFC800}
 @media (max-width:800px){.plan{grid-template-columns:1fr;gap:24px;padding:28px 22px}}
+
+/* Turnstile widget inside the contact form */
+#contactForm .cf-turnstile{min-height:65px}

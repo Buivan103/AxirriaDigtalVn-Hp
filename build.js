@@ -47,7 +47,7 @@ function render(page, lang) {
   // Smallest-team size from site.config.json `plan` (no prices are published on the site).
   // Cloudflare Turnstile widget, only when a site key is configured.
   const turnstile = cfg.turnstileSiteKey
-    ? `<div class="cf-turnstile" data-sitekey="${esc(cfg.turnstileSiteKey)}" data-language="${lang}"></div><script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>`
+    ? `<div class="cf-turnstile" data-sitekey="${esc(cfg.turnstileSiteKey)}" data-language="${lang}" data-callback="axTurnstile" data-expired-callback="axTurnstile" data-error-callback="axTurnstile"></div><script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>`
     : '';
   const vars = { lang, base, head, langSwitch, turnstile, 'plan.hours': cfg.plan.devHoursPerMonth, homeHref: rel(LANGS[lang].dir), privacyHref: rel(LANGS[lang].dir + 'privacy/') };
   for (const [k, v] of Object.entries(cfg)) if (typeof v !== 'object') vars['cfg.' + k] = v;

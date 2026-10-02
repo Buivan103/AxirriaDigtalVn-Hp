@@ -94,8 +94,15 @@
     var COOLDOWN = 60000, KEY = 'contactSentAt';
     var sentAt = function () { try { return +localStorage.getItem(KEY) || 0; } catch (e) { return 0; } };
     var coolingDown = function () { return Date.now() - sentAt() < COOLDOWN; };
+    // With Turnstile on the page, also wait for its token (the widget calls axTurnstile).
+    var captcha = form.querySelector('.cf-turnstile');
+    var captchaOk = function () {
+      var t = form.elements['cf-turnstile-response'];
+      return !captcha || !!(t && t.value);
+    };
+    window.axTurnstile = function () { sync(); };
     var sync = function () {
-      send.disabled = !form.checkValidity() || coolingDown();
+      send.disabled = !form.checkValidity() || !captchaOk() || coolingDown();
       if (coolingDown() && !msg.textContent) msg.textContent = dict['f.wait'];
     };
     setInterval(function () { if (!coolingDown() && msg.textContent === dict['f.wait']) msg.textContent = ''; sync(); }, 5000);
@@ -112,7 +119,7 @@
           if (r.status === 429) { msg.textContent = dict['f.wait']; return; }
           if (!r.ok) throw 0;
           try { localStorage.setItem(KEY, Date.now()); } catch (e) {}
-          form.reset(); stamp(); msg.textContent = dict['f.ok'];
+          form.reset(); stamp(); if (captcha && window.turnstile) turnstile.reset(captcha); msg.textContent = dict['f.ok'];
         })
         .catch(function () { msg.textContent = dict['f.err']; })
         .then(sync);
