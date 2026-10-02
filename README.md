@@ -52,3 +52,10 @@ The form posts to `/api/contact`; `worker.js` validates it (honeypot, per-IP rat
 4. Worker → Settings → Variables and Secrets: secret `GAS_URL` = that URL, secret `GAS_TOKEN` = same value as `TOKEN`.
 
 Recipients are addressed directly (not the `contact@` group) because Gmail hides group copies of mail sent by the account running the script.
+
+### Spam protection
+`worker.js` drops spam silently (the sender still sees "sent"; the reason is logged as `contact spam dropped: …`):
+honeypot field, fill time under 3s or a missing/stale form timestamp, 2+ links in the message, lookalike email domains (contain `axirriadigital` but are not `axirriadigital.com`), and spam keywords (`SPAM_WORDS`). Plus a per-IP rate limit and a 60s client cooldown.
+There is no database, so SQL injection does not apply; HTML is escaped in the email and newlines are stripped from the subject.
+
+Optional Cloudflare Turnstile: create a widget (Cloudflare → Turnstile) for `axirriadigital.com`, put the site key in `site.config.json` `turnstileSiteKey`, and add the secret key as Worker secret `TURNSTILE_SECRET`.

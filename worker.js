@@ -6,15 +6,47 @@ const LIMITS = { name: 100, company: 200, email: 200, topic: 100, message: 5000 
 const json = (status, body) =>
   new Response(JSON.stringify(body), { status, headers: { 'content-type': 'application/json' } });
 
-export function parseInquiry(form) {
-  const get = (k) => String(form.get(k) ?? '').trim();
-  if (get('website')) return { spam: true }; // honeypot: humans never fill this hidden field
+// Spam signals. Matching messages are dropped silently (the sender still sees "sent").
+const MIN_FILL_MS = 3000;          // humans take longer than this to fill the form
+const MAX_AGE_MS = 24 * 3600e3;    // stale or replayed timestamps
+const LINK_RE = /(https?:\/\/|www\.)\S+|\b[a-z0-9-]+\.(?:com|net|org|info|biz|pro|io|co|xyz|top|site|online|shop|ru|cn)\b/gi;
+const SPAM_WORDS = /\b(seo|search index|search results|backlinks?|guest post|link building|rank(?:ing)? on google|casino|crypto|forex|viagra|loan offer)\b/i;
+const OWN_DOMAIN = 'axirriadigital.com';
+
+// Drop control characters (keep tab/newline) so nothing odd reaches the email.
+const clean = (s) => s.replace(/[\u0000-\u0008\u000B\u000C\u000E-\u001F\u007F]/g, '').trim();
+
+export function spamReason(d, ts, now = Date.now()) {
+  const t = Number(ts);
+  if (!t || now - t < MIN_FILL_MS || now - t > MAX_AGE_MS) return 'timing';
+  if ((d.message.match(LINK_RE) || []).length >= 2) return 'links';
+  const domain = d.email.split('@')[1].toLowerCase();
+  if (domain !== OWN_DOMAIN && domain.includes('axirriadigital')) return 'lookalike domain';
+  if (SPAM_WORDS.test(`${d.name} ${d.company} ${d.message}`)) return 'keywords';
+  return '';
+}
+
+export function parseInquiry(form, now = Date.now()) {
+  const get = (k) => clean(String(form.get(k) ?? ''));
+  if (get('website')) return { spam: 'honeypot' }; // humans never fill this hidden field
   const d = { name: get('name'), company: get('company'), email: get('email'), topic: get('topic'), message: get('message') };
   for (const [k, max] of Object.entries(LIMITS)) if (d[k].length > max) return { error: `${k} too long` };
   if (!d.name || !d.message) return { error: 'missing fields' };
   if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(d.email)) return { error: 'invalid email' };
   if (get('privacy_consent') !== 'yes') return { error: 'consent required' };
-  return { data: d };
+  const reason = spamReason(d, get('ts'), now);
+  return reason ? { spam: reason } : { data: d };
+}
+
+// Optional Cloudflare Turnstile check, active only when the TURNSTILE_SECRET secret is set.
+async function turnstileOk(form, request, env) {
+  if (!env.TURNSTILE_SECRET) return true;
+  const body = new FormData();
+  body.set('secret', env.TURNSTILE_SECRET);
+  body.set('response', String(form.get('cf-turnstile-response') || ''));
+  body.set('remoteip', request.headers.get('cf-connecting-ip') || '');
+  const r = await fetch('https://challenges.cloudflare.com/turnstile/v0/siteverify', { method: 'POST', body });
+  return (await r.json().catch(() => ({}))).success === true;
 }
 
 async function handleContact(request, env) {
@@ -26,8 +58,9 @@ async function handleContact(request, env) {
   }
   let form;
   try { form = await request.formData(); } catch { return json(400, { ok: false, error: 'bad request' }); }
+  if (!(await turnstileOk(form, request, env))) return json(400, { ok: false, error: 'captcha failed' });
   const r = parseInquiry(form);
-  if (r.spam) return json(200, { ok: true });
+  if (r.spam) { console.log('contact spam dropped:', r.spam); return json(200, { ok: true }); }
   if (r.error) return json(400, { ok: false, error: r.error });
 
   // Hand off to the Google Apps Script mailer (apps-script/Code.gs). URL and token are Worker secrets.

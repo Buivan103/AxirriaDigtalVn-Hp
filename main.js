@@ -87,6 +87,9 @@
     // Submit stays disabled until every required field is valid and consent is ticked,
     // so the browser's own validation bubbles never show.
     var send = form.querySelector('[type=submit]');
+    // When the form was shown; the Worker drops submissions faster than a human could type.
+    var stamp = function () { form.elements.ts.value = Date.now(); };
+    stamp();
     // After a successful send, lock the form for COOLDOWN ms (kept across reloads).
     var COOLDOWN = 60000, KEY = 'contactSentAt';
     var sentAt = function () { try { return +localStorage.getItem(KEY) || 0; } catch (e) { return 0; } };
@@ -109,7 +112,7 @@
           if (r.status === 429) { msg.textContent = dict['f.wait']; return; }
           if (!r.ok) throw 0;
           try { localStorage.setItem(KEY, Date.now()); } catch (e) {}
-          form.reset(); msg.textContent = dict['f.ok'];
+          form.reset(); stamp(); msg.textContent = dict['f.ok'];
         })
         .catch(function () { msg.textContent = dict['f.err']; })
         .then(sync);
