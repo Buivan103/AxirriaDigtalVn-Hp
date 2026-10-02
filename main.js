@@ -117,7 +117,8 @@
       fetch(form.action, { method: 'POST', body: new FormData(form), headers: { Accept: 'application/json' } })
         .then(function (r) {
           if (r.status === 429) { msg.textContent = dict['f.wait']; return; }
-          if (!r.ok) throw 0;
+          // Log the server's reason for support/debugging (visible only in DevTools).
+          if (!r.ok) return r.text().then(function (t) { console.warn('contact form error', r.status, t); throw 0; });
           try { localStorage.setItem(KEY, Date.now()); } catch (e) {}
           form.reset(); stamp(); if (captcha && window.turnstile) turnstile.reset(captcha); msg.textContent = dict['f.ok'];
         })
