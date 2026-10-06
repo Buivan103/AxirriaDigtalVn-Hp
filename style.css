@@ -325,7 +325,7 @@ footer .wrap{display:flex;justify-content:space-between;align-items:center;flex-
 .half-note{margin-top:20px;padding:16px 20px;background:var(--paper);border-left:4px solid var(--yellow);border-radius:0 8px 8px 0;font-size:.95rem}
 .half-note b{margin-right:6px}
 .half-note a{font-weight:700;color:var(--indigo);margin-left:6px}
-.faq{margin-top:72px;max-width:860px}
+.faq{margin-top:72px}
 .faq h3{font-size:1.4rem;margin-bottom:16px}
 .faq details{border-bottom:1px solid var(--line)}
 .faq details:first-of-type{border-top:2px solid var(--indigo)}
