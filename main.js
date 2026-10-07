@@ -94,13 +94,26 @@
     var COOLDOWN = 60000, KEY = 'contactSentAt';
     var sentAt = function () { try { return +localStorage.getItem(KEY) || 0; } catch (e) { return 0; } };
     var coolingDown = function () { return Date.now() - sentAt() < COOLDOWN; };
-    // With Turnstile on the page, also wait for its token (the widget calls axTurnstile).
+    // With Turnstile on the page, also wait for its token (set via the render callbacks below).
     var captcha = form.querySelector('.cf-turnstile');
     var captchaOk = function () {
       var t = form.elements['cf-turnstile-response'];
       return !captcha || !!(t && t.value);
     };
-    window.axTurnstile = function () { sync(); };
+    // Rendered explicitly so the size fits the space: 'flexible' needs at least 300px.
+    var captchaId = null;
+    (function renderCaptcha() {
+      if (!captcha) return;
+      if (!window.turnstile) return setTimeout(renderCaptcha, 200);
+      captchaId = turnstile.render(captcha, {
+        sitekey: captcha.dataset.sitekey,
+        language: captcha.dataset.language,
+        size: captcha.clientWidth >= 300 ? 'flexible' : 'compact',
+        callback: function () { sync(); },
+        'expired-callback': function () { sync(); },
+        'error-callback': function () { sync(); },
+      });
+    })();
     var sync = function () {
       send.disabled = !form.checkValidity() || !captchaOk() || coolingDown();
       if (coolingDown() && !msg.textContent) msg.textContent = dict['f.wait'];
@@ -120,7 +133,7 @@
           // Log the server's reason for support/debugging (visible only in DevTools).
           if (!r.ok) return r.text().then(function (t) { console.warn('contact form error', r.status, t); throw 0; });
           try { localStorage.setItem(KEY, Date.now()); } catch (e) {}
-          form.reset(); stamp(); if (captcha && window.turnstile) turnstile.reset(captcha); msg.textContent = dict['f.ok'];
+          form.reset(); stamp(); if (captchaId !== null) turnstile.reset(captchaId); msg.textContent = dict['f.ok'];
         })
         .catch(function () { msg.textContent = dict['f.err']; })
         .then(sync);
