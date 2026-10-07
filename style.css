@@ -371,3 +371,31 @@ footer .wrap{display:flex;justify-content:space-between;align-items:center;flex-
 
 /* long email address in the contact card may wrap on tiny screens */
 .ways strong{overflow-wrap:anywhere}
+
+/* mobile rhythm: tighter vertical spacing and lighter cards so phones read like the PC layout */
+@media (max-width:700px){
+  .block{padding:64px 0}
+  .hero{padding:24px 0 56px}
+  .hero p{font-size:.95rem;margin-top:16px}
+  .hero .cta{margin-top:24px}
+  .sub{margin-top:8px}
+  .rows{margin-top:32px}
+  .rows article{padding:24px 0}
+  .mu{margin-top:0;gap:32px}
+  .roles{margin-top:32px;gap:16px}
+  .role{padding:22px}
+  .half-note{padding:14px 16px}
+  .day{margin-top:16px}
+  .tbl{margin-top:40px}
+  .steps,.plan,.faq{margin-top:48px}
+  .cases{margin-top:32px;gap:16px}
+  .case{padding:22px}
+  .partner .wrap{gap:24px}
+  .partner blockquote{margin:12px 0 18px}
+  .news{margin-top:20px}
+  dl.info{margin-top:24px}
+  dl.info dt,dl.info dd{padding:10px 0}
+  .contact{margin-top:28px;gap:20px}
+  #contactForm{padding:22px 18px}
+  .chat-input .field{max-height:200px;overflow:auto}
+}

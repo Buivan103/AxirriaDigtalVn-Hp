@@ -109,6 +109,7 @@
         sitekey: captcha.dataset.sitekey,
         language: captcha.dataset.language,
         size: captcha.clientWidth >= 300 ? 'flexible' : 'compact',
+        theme: 'light', // match the light form even when the OS is in dark mode
         callback: function () { sync(); },
         'expired-callback': function () { sync(); },
         'error-callback': function () { sync(); },
