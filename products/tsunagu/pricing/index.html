@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>料金｜Tsunagu</title>
+<meta name="description" content="Tsunagu は、名刺の読み取り・インボイス登録番号の確認・入金消込・表記ゆれの整形を Google スプレッドシートで行うアドオンです。">
+<link rel="icon" href="/tsunagu/icon-128.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=BIZ+UDPGothic:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root{--bg:#FFFDF7;--panel:#FAF4E6;--grid:#E7DDC7;--fg:#3A342B;--muted:#7B705E;--accent:#E9C46A;--accent-line:#D9B04F;--link:#8A6418;
+    --font:"BIZ UDPGothic","Hiragino Kaku Gothic ProN","Hiragino Sans","Yu Gothic","YuGothic","Meiryo","Noto Sans JP",sans-serif}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.85 var(--font)}
+  a{color:var(--link)}
+  header{background:var(--panel);border-bottom:1px solid var(--grid)}
+  .wrap{max-width:860px;margin:0 auto;padding:0 20px}
+  .top{display:flex;align-items:center;gap:10px;padding:14px 0;font-weight:700;font-size:20px}
+  .top a{color:var(--fg);text-decoration:none;display:flex;align-items:center;gap:10px}
+  nav{display:flex;flex-wrap:wrap;gap:4px 18px;padding:0 0 12px;font-size:14px}
+  nav a{text-decoration:none;color:var(--muted)} nav a[aria-current]{color:var(--fg);font-weight:700;border-bottom:2px solid var(--accent-line)}
+  main{padding:28px 0 48px}
+  h1{font-size:28px;line-height:1.5;margin:8px 0 20px}
+  h2{font-size:19px;margin:36px 0 10px;padding-bottom:4px;border-bottom:1px solid var(--grid)}
+  h3{font-size:16px;margin:22px 0 6px}
+  p,li{margin:6px 0} ul,ol{padding-left:1.4em}
+  .lead{font-size:17px;color:var(--muted)}
+  .meta{color:var(--muted);font-size:14px}
+  table{border-collapse:collapse;width:100%;margin:12px 0;font-size:15px}
+  th,td{border:1px solid var(--grid);padding:8px 12px;text-align:left;vertical-align:top}
+  th{background:var(--panel);font-weight:700}
+  .box{background:var(--panel);border:1px solid var(--grid);border-radius:6px;padding:14px 18px;margin:16px 0}
+  .shots img{display:block;width:100%;border:1px solid var(--grid);border-radius:6px;margin:14px 0}
+  .btn{display:inline-block;background:var(--accent);border:1px solid var(--accent-line);color:var(--fg);font-weight:700;text-decoration:none;padding:9px 18px;border-radius:5px}
+  footer{border-top:1px solid var(--grid);background:var(--panel);color:var(--muted);font-size:13px;padding:18px 0}
+  footer .wrap{display:flex;flex-wrap:wrap;gap:6px 18px;justify-content:space-between}
+  @media (max-width:600px){h1{font-size:23px} th,td{padding:6px 8px}}
+</style>
+</head>
+<body>
+<header><div class="wrap"><div class="top"><a href="/tsunagu/"><svg width="28" height="28" viewBox="0 0 48 48" aria-hidden="true"><rect width="48" height="48" rx="11" fill="#E9C46A"/><text x="24" y="34" text-anchor="middle" font-family="BIZ UDPGothic, sans-serif" font-size="28" font-weight="700" fill="#3A342B">つ</text></svg>Tsunagu</a></div><nav><a href="/tsunagu/">Tsunagu</a><a href="/tsunagu/pricing/" aria-current="page">料金</a><a href="/tsunagu/support/">サポート</a><a href="/tsunagu/privacy/">プライバシーポリシー</a><a href="/tsunagu/terms/">利用規約</a></nav></div></header>
+<main><div class="wrap">
+
+<h1>料金</h1>
+<table>
+<tr><th style="width:30%">プラン</th><th>内容</th><th style="width:22%">料金</th></tr>
+<tr><td><b>無料プラン</b></td><td>
+<ul>
+<li>AIによる名刺の読み取り：<b>毎月10枚まで</b>（毎月1日・日本時間にリセット）</li>
+<li>インボイス登録番号の形式確認・入金消込・データ整形：回数制限なし</li>
+</ul></td><td>0円</td></tr>
+<tr><td><b>有料プラン</b></td><td>
+<ul>
+<li>AIによる名刺の読み取り枚数の上限を引き上げます</li>
+<li>国税庁の公表サイトを使った登録番号のオンライン確認（提供開始後）</li>
+</ul></td><td>準備中</td></tr>
+</table>
+<div class="box">
+<p><b>有料プランは現在準備中です。</b>無料枠を超えてご利用になりたい場合や、法人でのまとまったご利用は <a href="mailto:contact@axirriadigital.com?subject=Tsunagu%20有料プランについて">contact@axirriadigital.com</a> までご相談ください。</p>
+</div>
+<h2>よくある質問</h2>
+<h3>枚数はどのように数えますか？</h3>
+<p>AIに送った写真1枚につき1枚と数えます。読み取りに失敗した場合（サーバーのエラーなど）は数えません。残りの枚数は「名刺の読み取り」画面の上部に表示されます。</p>
+<h3>無料枠を使い切るとどうなりますか？</h3>
+<p>翌月1日まで、AIによる名刺の読み取りができなくなります。その他の機能は引き続きお使いいただけます。料金が自動で発生することはありません。</p>
+<h3>1日の上限はありますか？</h3>
+<p>不正利用を防ぐため、1日あたりの読み取り枚数にも上限を設けています。</p>
+
+</div></main>
+<footer><div class="wrap"><span>© 2026 Axirria Digital</span><span><a href="/tsunagu/tokushoho/">特定商取引法に基づく表記</a>　お問い合わせ：<a href="mailto:contact@axirriadigital.com">contact@axirriadigital.com</a></span></div></footer>
+</body>
+</html>

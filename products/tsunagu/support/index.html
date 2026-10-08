@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>サポート｜Tsunagu</title>
+<meta name="description" content="Tsunagu は、名刺の読み取り・インボイス登録番号の確認・入金消込・表記ゆれの整形を Google スプレッドシートで行うアドオンです。">
+<link rel="icon" href="/tsunagu/icon-128.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=BIZ+UDPGothic:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root{--bg:#FFFDF7;--panel:#FAF4E6;--grid:#E7DDC7;--fg:#3A342B;--muted:#7B705E;--accent:#E9C46A;--accent-line:#D9B04F;--link:#8A6418;
+    --font:"BIZ UDPGothic","Hiragino Kaku Gothic ProN","Hiragino Sans","Yu Gothic","YuGothic","Meiryo","Noto Sans JP",sans-serif}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.85 var(--font)}
+  a{color:var(--link)}
+  header{background:var(--panel);border-bottom:1px solid var(--grid)}
+  .wrap{max-width:860px;margin:0 auto;padding:0 20px}
+  .top{display:flex;align-items:center;gap:10px;padding:14px 0;font-weight:700;font-size:20px}
+  .top a{color:var(--fg);text-decoration:none;display:flex;align-items:center;gap:10px}
+  nav{display:flex;flex-wrap:wrap;gap:4px 18px;padding:0 0 12px;font-size:14px}
+  nav a{text-decoration:none;color:var(--muted)} nav a[aria-current]{color:var(--fg);font-weight:700;border-bottom:2px solid var(--accent-line)}
+  main{padding:28px 0 48px}
+  h1{font-size:28px;line-height:1.5;margin:8px 0 20px}
+  h2{font-size:19px;margin:36px 0 10px;padding-bottom:4px;border-bottom:1px solid var(--grid)}
+  h3{font-size:16px;margin:22px 0 6px}
+  p,li{margin:6px 0} ul,ol{padding-left:1.4em}
+  .lead{font-size:17px;color:var(--muted)}
+  .meta{color:var(--muted);font-size:14px}
+  table{border-collapse:collapse;width:100%;margin:12px 0;font-size:15px}
+  th,td{border:1px solid var(--grid);padding:8px 12px;text-align:left;vertical-align:top}
+  th{background:var(--panel);font-weight:700}
+  .box{background:var(--panel);border:1px solid var(--grid);border-radius:6px;padding:14px 18px;margin:16px 0}
+  .shots img{display:block;width:100%;border:1px solid var(--grid);border-radius:6px;margin:14px 0}
+  .btn{display:inline-block;background:var(--accent);border:1px solid var(--accent-line);color:var(--fg);font-weight:700;text-decoration:none;padding:9px 18px;border-radius:5px}
+  footer{border-top:1px solid var(--grid);background:var(--panel);color:var(--muted);font-size:13px;padding:18px 0}
+  footer .wrap{display:flex;flex-wrap:wrap;gap:6px 18px;justify-content:space-between}
+  @media (max-width:600px){h1{font-size:23px} th,td{padding:6px 8px}}
+</style>
+</head>
+<body>
+<header><div class="wrap"><div class="top"><a href="/tsunagu/"><svg width="28" height="28" viewBox="0 0 48 48" aria-hidden="true"><rect width="48" height="48" rx="11" fill="#E9C46A"/><text x="24" y="34" text-anchor="middle" font-family="BIZ UDPGothic, sans-serif" font-size="28" font-weight="700" fill="#3A342B">つ</text></svg>Tsunagu</a></div><nav><a href="/tsunagu/">Tsunagu</a><a href="/tsunagu/pricing/">料金</a><a href="/tsunagu/support/" aria-current="page">サポート</a><a href="/tsunagu/privacy/">プライバシーポリシー</a><a href="/tsunagu/terms/">利用規約</a></nav></div></header>
+<main><div class="wrap">
+
+<h1>サポート</h1>
+<h2>お問い合わせ</h2>
+<p>ご質問・不具合のご報告・ご要望は、次のいずれかでお送りください。通常3営業日以内にご返信します（土日祝・年末年始を除く）。</p>
+<ul>
+<li>アドオンのメニュー［拡張機能］→［Tsunagu］→［ご意見・不具合を送る…］</li>
+<li>メール：<a href="mailto:contact@axirriadigital.com">contact@axirriadigital.com</a></li>
+</ul>
+<div class="box">
+<p><b>不具合のご報告のお願い</b></p>
+<p>運営者は皆さまのスプレッドシートや名刺の内容を見ることができません。できるだけ具体的に、次の点をお知らせください。</p>
+<ul>
+<li>使っていた画面（例：名刺の読み取り、入金消込）</li>
+<li>行った操作と、そのとき表示されたメッセージ</li>
+<li>画像やファイルの種類（例：iPhone の写真、ZIP、銀行の CSV）</li>
+</ul>
+<p>名刺の内容・氏名・メールアドレスなどの個人情報は書かないでください。</p>
+</div>
+<h2>よくある質問</h2>
+<h3>読み取れない名刺があります</h3>
+<p>ピンぼけ・暗い・反射が強い写真や、名刺以外の画像は読み取れないことがあります。名刺全体が写るように、明るい場所で正面から撮り直してお試しください。読み取れなかった名刺は、空欄の行として表示されるので手で入力できます。</p>
+<h3>「修正」と表示された欄があります</h3>
+<p>名刺に印刷された表記が一般的な表記と違う場合（地名のローマ字表記など）、Tsunagu が直して理由を表示します。印刷どおりにしたい場合は「元に戻す」を押してください。</p>
+<h3>色の付いた欄があります</h3>
+<p>AIの読み取りに自信がない欄です。画像と見比べて確認してください。別の読み方の候補があれば「こちらにする」で切り替えられます。</p>
+<h3>アンインストールするには</h3>
+<p>スプレッドシートのメニュー［拡張機能］→［アドオン］→［アドオンを管理］から Tsunagu を選び、［アンインストール］を押します。アカウントからアクセス権を外すには、Google アカウントの［セキュリティ］→［サードパーティ製のアプリとサービス］から Tsunagu を削除してください。</p>
+<h3>料金について</h3>
+<p><a href="/tsunagu/pricing/">料金</a>をご覧ください。</p>
+
+</div></main>
+<footer><div class="wrap"><span>© 2026 Axirria Digital</span><span><a href="/tsunagu/tokushoho/">特定商取引法に基づく表記</a>　お問い合わせ：<a href="mailto:contact@axirriadigital.com">contact@axirriadigital.com</a></span></div></footer>
+</body>
+</html>

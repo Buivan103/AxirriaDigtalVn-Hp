@@ -84,3 +84,12 @@ for (const page of PAGES) {
 }
 for (const f of ASSETS) fs.copyFileSync(f, path.join(OUT, f));
 console.log('copied', ASSETS.join(', '));
+// Product pages (static, generated in each product's repo): products/<name>/ -> dist/<name>/
+// e.g. products/tsunagu/ is built by the Tsunagu repo (scripts/build-site.js) and served at /tsunagu/.
+if (fs.existsSync('products')) {
+  for (const name of fs.readdirSync('products')) {
+    if (!fs.statSync(path.join('products', name)).isDirectory()) continue;
+    fs.cpSync(path.join('products', name), path.join(OUT, name), { recursive: true });
+    console.log('copied products/' + name + ' -> ' + OUT + '/' + name);
+  }
+}
