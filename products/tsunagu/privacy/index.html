@@ -24,7 +24,10 @@
   main{padding:28px 0 48px}
   h1{font-size:28px;line-height:1.5;margin:8px 0 20px}
   h2{font-size:19px;margin:36px 0 10px;padding-bottom:4px;border-bottom:1px solid var(--grid)}
-  h3{font-size:16px;margin:22px 0 6px}
+  h3{font-size:17px;margin:28px 0 8px}
+  h4{font-size:15px;margin:20px 0 6px}
+  .toc p{margin:0 0 4px} .toc ol{margin:0}
+  td{font-weight:400}
   p,li{margin:6px 0} ul,ol{padding-left:1.4em}
   .lead{font-size:17px;color:var(--muted)}
   .meta{color:var(--muted);font-size:14px}
@@ -45,78 +48,89 @@
 
 <h1>プライバシーポリシー</h1>
 <p class="meta">制定日：2026年10月8日</p>
-<p>土田 陽日（以下「運営者」）は、Google スプレッドシート用アドオン「Tsunagu」（以下「本サービス」）における利用者の情報の取扱いについて、個人情報の保護に関する法律その他の関係法令を遵守し、以下のとおり定めます。</p>
-
-<h2>1. 取得する情報と取扱い</h2>
-<table>
-<tr><th style="width:26%">情報</th><th>取扱い</th></tr>
-<tr><td>Google アカウントのメールアドレス</td><td>本サービスはアドオン内でメールアドレスから不可逆な識別子（SHA-256 ハッシュ）を作成し、識別子だけを運営者のサーバーへ送信します。<b>メールアドレスそのものを運営者が受け取ったり保存したりすることはありません。</b>識別子は、無料枠の残り枚数とご契約プランの管理にのみ使います。</td></tr>
-<tr><td>名刺の画像と読み取り結果</td><td>「名刺の読み取り」を実行したときだけ、選んだ画像を運営者のサーバーへ送信し、Google Cloud の Vertex AI（Gemini）で文字を読み取ります。画像と読み取り結果はメモリ上で処理し、<b>運営者のサーバーには保存せず、ログにも記録しません。</b>読み取り結果は利用者のスプレッドシートにのみ書き込まれます。</td></tr>
-<tr><td>スプレッドシートの内容</td><td>本サービスは利用者が開いているスプレッドシートにだけアクセスし、各機能の実行に必要な範囲で読み書きします。インボイス確認・入金消込・データ整形はアドオン内で処理し、シートの内容を運営者のサーバーへ送信しません（国税庁の公表サイトでのオンライン確認を利用する場合は、登録番号のみを送信します）。</td></tr>
-<tr><td>利用回数</td><td>識別子ごと・月ごとの名刺の読み取り枚数を、Google Cloud Firestore（東京リージョン）に保存します。保存するのは識別子・年月・枚数のみです。</td></tr>
-<tr><td>お問い合わせ・ご意見</td><td>［ご意見・不具合を送る］で送られた内容（種類・本文・任意で入力されたメールアドレス・画面名・アドオンのバージョン・識別子）を、返信と改善のために運営者が管理するスプレッドシートに保存します。</td></tr>
-<tr><td>技術ログ</td><td>処理時間・エラーの種類・AIの処理量など、名刺やシートの内容を含まない情報を、障害対応と品質改善のために記録します（Google Cloud Logging、保存期間は原則30日）。</td></tr>
-</table>
-
-<h2>2. 利用目的</h2>
+<p>土田 陽日（以下「運営者」）は、運営者が提供するアプリ（以下「本アプリ」）における利用者の情報の取扱いについて、個人情報の保護に関する法律その他の関係法令を遵守し、以下のとおり定めます。第1部はすべての本アプリに共通の事項、第2部はアプリごとの事項です。</p>
+<div class="box toc">
+<p>目次</p>
 <ol>
-<li>本サービスの提供（名刺の読み取り、登録番号の確認等）</li>
-<li>無料枠・ご契約プランの管理と不正利用の防止</li>
-<li>お問い合わせへの対応、不具合の調査と改善</li>
+<li><a href="#common">第1部　共通事項</a></li>
+<li><a href="#tsunagu">第2部　アプリ別の事項：Tsunagu（Google スプレッドシート用アドオン）</a></li>
 </ol>
-<p>取得した情報を広告に利用したり、販売したりすることはありません。名刺の画像や読み取り結果を、AIモデルの学習に利用することはありません。</p>
+</div>
 
-<h2>3. Google API から取得する情報について（Limited Use）</h2>
-<p>本サービスが Google API から受け取った情報の利用と移転は、<a href="https://developers.google.com/terms/api-services-user-data-policy" target="_blank" rel="noopener">Google API サービスのユーザーデータに関するポリシー</a>（Limited Use の要件を含む）に従います。</p>
-<p lang="en">Tsunagu's use and transfer of information received from Google APIs to any other app will adhere to the <a href="https://developers.google.com/terms/api-services-user-data-policy" target="_blank" rel="noopener">Google API Services User Data Policy</a>, including the Limited Use requirements.</p>
-<p>本サービスが使用する権限は次のとおりです。</p>
+<h2 id="common">第1部　共通事項</h2>
+
+<h3>1. 基本方針</h3>
 <ul>
-<li>現在開いているスプレッドシートの表示・編集（spreadsheets.currentonly）</li>
-<li>スプレッドシート内でのダイアログ表示（script.container.ui）</li>
-<li>外部サービスへの接続（script.external_request）：運営者のサーバーへの送信に使用</li>
-<li>メールアドレスの参照（userinfo.email）：上記の識別子の作成にのみ使用</li>
+<li>取得する情報は、本アプリの提供に必要な最小限にとどめます。</li>
+<li>利用者が本アプリで扱うデータ（名刺、シート、チケット等の内容）は、処理に必要な間だけ扱い、運営者のサーバーには保存しません。</li>
+<li>取得した情報を広告に利用したり、販売したりすることはありません。</li>
+<li>利用者のデータを AI モデルの学習に利用することはありません。</li>
 </ul>
 
-<h2>4. 外部への委託と外国にある第三者</h2>
-<p>運営者は本サービスの提供のため、次の事業者のクラウドサービスを利用しています。</p>
+<h3>2. 利用目的</h3>
+<ol>
+<li>本アプリの機能の提供</li>
+<li>無料枠・ご契約プランの管理と不正利用の防止</li>
+<li>お問い合わせへの対応、不具合の調査と品質改善</li>
+</ol>
+
+<h3>3. 委託先と外国にある第三者</h3>
 <table>
-<tr><th style="width:26%">事業者</th><th>内容</th></tr>
-<tr><td>Google LLC（米国）</td><td>サーバーの運用（Cloud Run、東京リージョン）、AIによる文字の読み取り（Vertex AI）、利用回数の保存（Firestore）。AIの処理は日本国外のデータセンターで行われる場合があります。Google は Google Cloud の利用規約に基づき、運営者の指示の範囲でのみデータを処理し、AIモデルの学習には利用しません。</td></tr>
-<tr><td>AXIRRIA DIGITAL VIETNAM LIMITED COMPANY（ベトナム）</td><td>本サービスの開発・保守。障害の調査やお問い合わせへの対応のため、技術ログ（名刺やシートの内容は含みません）およびお問い合わせの内容を取り扱う場合があります。</td></tr>
+<tr><th style="width:30%">委託先</th><th>委託する内容</th></tr>
+<tr><td>Google LLC（米国）</td><td>サーバーの運用、AI による処理、利用回数の保存（Google Cloud）。AI の処理は日本国外で行われる場合があります。</td></tr>
+<tr><td>AXIRRIA DIGITAL VIETNAM LIMITED COMPANY（ベトナム）</td><td>本アプリの開発・保守。障害の調査やお問い合わせへの対応のため、技術ログおよびお問い合わせの内容を取り扱う場合があります。</td></tr>
 </table>
-<p>米国の個人情報保護制度については、個人情報保護委員会が公表している<a href="https://www.ppc.go.jp/personalinfo/legal/kaiseihogohou/#gaikoku" target="_blank" rel="noopener">外国における個人情報の保護に関する制度等の調査</a>をご参照ください（ベトナムについても同じ資料に掲載されています）。運営者は、委託先との契約により個人情報の適切な取扱いを求めるとともに、Google Cloud の利用規約およびデータ処理に関する規約（Cloud Data Processing Addendum）に基づき、Google LLC による適切な取扱いを確保しています。</p>
+<p>運営者は、契約および各社の規約（Google Cloud の Cloud Data Processing Addendum 等）により、委託先での適切な取扱いを確保しています。米国・ベトナムの個人情報保護制度は、個人情報保護委員会の<a href="https://www.ppc.go.jp/personalinfo/legal/kaiseihogohou/#gaikoku" target="_blank" rel="noopener">外国における個人情報の保護に関する制度等の調査</a>をご参照ください。</p>
 <p>法令に基づく場合を除き、利用者の同意なく第三者に情報を提供することはありません。</p>
 
-<h2>5. 安全管理措置</h2>
+<h3>4. 安全管理措置</h3>
 <ul>
 <li>通信はすべて暗号化（HTTPS）しています。</li>
-<li>サーバーへのアクセスには専用の認証キーを使用し、キーはアドオンの利用者からは見えない場所で管理しています。</li>
-<li>名刺の画像と読み取り結果は保存せず、ログにも残しません。</li>
-<li>クラウドの管理権限は必要最小限の担当者に限定しています。</li>
+<li>サーバーへのアクセスには専用の認証キーを使用し、利用者からは見えない場所で管理しています。</li>
+<li>クラウドの管理権限は、必要最小限の担当者に限定しています。</li>
 </ul>
 
-<h2>6. 保存期間と削除</h2>
-<ul>
-<li>利用回数：記録した月の翌月から12か月以内に削除します。</li>
-<li>お問い合わせ・ご意見：対応完了後、原則2年以内に削除します。</li>
-<li>本サービスをアンインストールすると、アドオンはスプレッドシートにアクセスしなくなります。シートに書き込まれた内容は利用者のスプレッドシートに残ります。</li>
-</ul>
+<h3>5. 開示・訂正・削除等のご請求</h3>
+<p>運営者が保有する情報の開示・訂正・利用停止・削除等は、<a href="mailto:contact@axirriadigital.com">contact@axirriadigital.com</a> までご連絡ください。ご本人であることを確認のうえ、法令に従って対応します。</p>
 
-<h2>7. 開示・訂正・削除等のご請求</h2>
-<p>運営者が保有する情報の開示・訂正・利用停止・削除等をご希望の場合は、<a href="mailto:contact@axirriadigital.com">contact@axirriadigital.com</a> までご連絡ください。ご本人であることを確認のうえ、法令に従って対応します。なお、運営者はメールアドレスそのものを保有していないため、ご請求の際にはご利用の Google アカウントのメールアドレスをお知らせいただく必要があります。</p>
-
-<h2>8. 事業者情報・お問い合わせ窓口</h2>
+<h3>6. 事業者情報・お問い合わせ窓口</h3>
 <table>
-<tr><th style="width:26%">氏名・名称</th><td>土田 陽日（個人事業主）</td></tr>
+<tr><th style="width:30%">氏名・名称</th><td>土田 陽日（個人事業主）</td></tr>
 <tr><th>住所</th><td>ご請求があった場合、遅滞なく開示いたします。</td></tr>
-
 
 <tr><th>開発</th><td>AXIRRIA DIGITAL VIETNAM LIMITED COMPANY（ベトナム）</td></tr>
 <tr><th>お問い合わせ</th><td><a href="mailto:contact@axirriadigital.com">contact@axirriadigital.com</a></td></tr>
 </table>
 
-<h2>9. 改定</h2>
-<p>本ポリシーは、法令の改正や本サービスの変更に応じて改定することがあります。重要な変更がある場合は、本ページまたはアドオン内でお知らせします。</p>
+<h3>7. 改定</h3>
+<p>本ポリシーは、法令の改正や本アプリの変更に応じて改定することがあります。重要な変更は、本ページまたは本アプリ内でお知らせします。</p>
+
+<h2 id="tsunagu">第2部　アプリ別の事項</h2>
+
+<h3>Tsunagu（Google スプレッドシート用アドオン）</h3>
+
+<h4>取得する情報</h4>
+<table>
+<tr><th style="width:30%">情報</th><th>取扱い</th><th style="width:22%">保存</th></tr>
+<tr><td>名刺の画像・読み取り結果</td><td>「名刺の読み取り」を実行したときだけサーバーへ送り、Vertex AI（Gemini）で文字を読み取ります。結果は利用者のシートにだけ書き込みます。</td><td>保存しません（ログにも残しません）</td></tr>
+<tr><td>スプレッドシートの内容</td><td>開いているシートだけを、機能に必要な範囲で読み書きします。インボイス確認・入金消込・データ整形はアドオン内で処理します（国税庁サイトでの確認時は登録番号のみ送信）。</td><td>保存しません</td></tr>
+<tr><td>メールアドレス</td><td>アドオン内で不可逆な識別子（SHA-256）に変換し、識別子だけを送信します。メールアドレスそのものは受け取りません。</td><td>識別子のみ</td></tr>
+<tr><td>利用回数</td><td>識別子ごと・月ごとの読み取り枚数（Firestore、東京リージョン）。</td><td>約12か月で自動削除</td></tr>
+<tr><td>お問い合わせ</td><td>［ご意見・不具合を送る］の内容（本文、任意のメールアドレス、画面名、バージョン、識別子）。</td><td>対応完了後、原則2年以内に削除</td></tr>
+<tr><td>技術ログ</td><td>処理時間、エラーの種類、AI の処理量など。名刺やシートの内容は含みません。</td><td>原則30日</td></tr>
+</table>
+<p>アドオンをアンインストールすると、シートへのアクセスは止まります。シートに書き込まれた内容は利用者のシートに残ります。</p>
+
+<h4>Google API から取得する情報（Limited Use）</h4>
+<p>本アプリが Google API から受け取った情報の利用と移転は、<a href="https://developers.google.com/terms/api-services-user-data-policy" target="_blank" rel="noopener">Google API サービスのユーザーデータに関するポリシー</a>（Limited Use の要件を含む）に従います。</p>
+<p lang="en">Tsunagu's use and transfer of information received from Google APIs to any other app will adhere to the <a href="https://developers.google.com/terms/api-services-user-data-policy" target="_blank" rel="noopener">Google API Services User Data Policy</a>, including the Limited Use requirements.</p>
+<table>
+<tr><th style="width:42%">権限（スコープ）</th><th>使う目的</th></tr>
+<tr><td>spreadsheets.currentonly</td><td>開いているシートの表示・編集</td></tr>
+<tr><td>script.container.ui</td><td>シート内でのダイアログ表示</td></tr>
+<tr><td>script.external_request</td><td>名刺画像の読み取りなど、運営者のサーバーへの送信</td></tr>
+<tr><td>userinfo.email</td><td>無料枠を管理する識別子の作成</td></tr>
+</table>
 
 </div></main>
 <footer><div class="wrap"><span>© 2026 Axirria Digital</span><span><a href="/tsunagu/tokushoho/">特定商取引法に基づく表記</a>　お問い合わせ：<a href="mailto:contact@axirriadigital.com">contact@axirriadigital.com</a></span></div></footer>
