@@ -9,7 +9,10 @@ const LANGS = { ja: { dir: '', og: 'ja_JP' }, en: { dir: 'en/', og: 'en_US' } };
 const PAGES = [
   { src: 'src/index.html', dir: '', title: 'meta.title' },
   { src: 'src/privacy.html', dir: 'privacy/', title: 'pp.title' },
+  { src: 'src/products.html', dir: 'products/', title: 'pr.pageTitle' },
 ];
+
+const PRODUCTS = JSON.parse(fs.readFileSync('products.json', 'utf8')).products;
 
 const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 
@@ -49,7 +52,14 @@ function render(page, lang) {
   const turnstile = cfg.turnstileSiteKey
     ? `<div class="cf-turnstile" data-sitekey="${esc(cfg.turnstileSiteKey)}" data-language="${lang}"></div><script src="https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit" async defer></script>`
     : '';
-  const vars = { lang, base, head, langSwitch, turnstile, 'plan.hours': cfg.plan.devHoursPerMonth, homeHref: rel(LANGS[lang].dir), privacyHref: rel(LANGS[lang].dir + 'privacy/') };
+  // Product cards and footer links from products.json (hrefs are site-absolute paths).
+  const productCards = PRODUCTS.map((p) => {
+    const icon = p.icon ? `<img src="${esc(p.icon)}" width="56" height="56" alt="">` : `<span aria-hidden="true">${esc(p.name[0])}</span>`;
+    const status = p.status ? ` <em class="prod-st">${esc(p.status[lang])}</em>` : '';
+    return `<a class="prod" href="${esc(p.href[lang])}"><span class="prod-ic">${icon}</span><span class="prod-b"><span class="prod-n">${esc(p.name)}${status}</span><span class="prod-t">${esc(p.tagline[lang])}</span><span class="prod-more">${dict['pr.more']}</span></span></a>`;
+  }).join('');
+  const productLinks = PRODUCTS.map((p) => `<a href="${esc(p.href[lang])}">${esc(p.name)}</a>`).join('');
+  const vars = { lang, base, head, langSwitch, productCards, productLinks, productsHref: rel(LANGS[lang].dir + 'products/'), turnstile, 'plan.hours': cfg.plan.devHoursPerMonth, homeHref: rel(LANGS[lang].dir), privacyHref: rel(LANGS[lang].dir + 'privacy/') };
   for (const [k, v] of Object.entries(cfg)) if (typeof v !== 'object') vars['cfg.' + k] = v;
 
   let html = fs.readFileSync(page.src, 'utf8');

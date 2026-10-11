@@ -16,6 +16,7 @@
     <a class="logo" href="#top" aria-label="Axirria Digital Vietnam"><img class="mark" src="{{base}}logo-mark.svg" width="44" height="44" alt=""><span class="nm"><span class="wm" aria-hidden="true">ax<i>ı<b class="h"></b></i>rr<i>ı<b class="f"></b></i>a</span><span class="r">digital vietnam</span></span></a>
     <ul class="menu" id="siteMenu">
       <li><a href="#services" data-i18n="nav.services"></a></li>
+      <li><a href="#products" data-i18n="nav.products"></a></li>
       <li><a href="#munemo" data-i18n="nav.munemo"></a></li>
       <li><a href="#offshore" data-i18n="nav.offshore"></a></li>
       <li><a href="#cases" data-i18n="nav.cases"></a></li>
@@ -62,6 +63,12 @@
         <article><h3 data-i18n="svc1.t"></h3><p data-i18n="svc1.d"></p><ul data-i18n="svc1.l"></ul></article>
         <article><h3 data-i18n="svc2.t"></h3><p data-i18n="svc2.d"></p><ul data-i18n="svc2.l"></ul></article>
         <article><h3 data-i18n="svc3.t"></h3><p data-i18n="svc3.d"></p><ul data-i18n="svc3.l"></ul></article>
+      </div>
+      <div class="prods" id="products">
+        <h3 data-i18n="pr.title"></h3>
+        <p class="sub" data-i18n="pr.lead"></p>
+        <div class="prod-grid">{{productCards}}</div>
+        <a class="textlink" href="{{productsHref}}" data-i18n="pr.all"></a>
       </div>
     </div>
   </section>
@@ -232,6 +239,7 @@
   <div class="wrap">
     <span class="ft-logo" aria-label="Axirria Digital Vietnam"><img class="mark" src="{{base}}logo-mark.svg" width="44" height="44" alt=""><span class="nm"><span class="wm" aria-hidden="true">ax<i>ı<b class="h"></b></i>rr<i>ı<b class="f"></b></i>a</span><span class="r">digital vietnam</span></span></span>
     <span>© 2026 AXIRRIA DIGITAL VIETNAM LIMITED COMPANY</span>
+    <nav class="ft-prods" aria-label="Products"><span data-i18n="ft.products"></span>{{productLinks}}</nav>
     <a class="ft-link" href="{{privacyHref}}" data-i18n="ft.privacy"></a>
     <span data-i18n="ft.partner"></span>
   </div>

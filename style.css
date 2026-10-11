@@ -43,7 +43,7 @@ section[id]{scroll-margin-top:76px}
 .wm b{position:absolute;left:50%;transform:translateX(-50%);bottom:.76em;display:block}
 .wm b.h{width:.15em;height:.15em;background:currentColor}
 .wm b.f{width:.24em;height:.24em;background:var(--dot,var(--yellow))}
-.menu{display:flex;gap:28px;list-style:none;font-size:.92rem}
+.menu{display:flex;gap:22px;list-style:none;font-size:.92rem}
 .menu a{text-decoration:none}
 .menu a:hover{text-decoration:underline;text-underline-offset:5px}
 .lang{display:flex;background:rgba(30,42,90,.1);border-radius:6px;padding:3px}
@@ -70,7 +70,7 @@ section[id]{scroll-margin-top:76px}
 
 .logo{white-space:nowrap}
 .menu a{white-space:nowrap}
-@media (max-width:1120px){.nav{gap:22px}.menu{gap:20px}.logo .nm{flex-direction:column;align-items:flex-start;gap:3px;font-size:1.3rem}.logo .nm .r{font-size:.8em}}
+@media (max-width:1120px){.nav{gap:18px}.menu{gap:16px;font-size:.88rem}.logo .nm{flex-direction:column;align-items:flex-start;gap:3px;font-size:1.3rem}.logo .nm .r{font-size:.8em}}
 @media (max-width:520px){.nav{gap:12px}.logo .nm{flex-direction:column;align-items:flex-start;gap:3px;font-size:1.3rem}.logo .nm .r{font-size:.8em}.logo .mark{width:40px;height:40px}.logo{gap:10px}}
 
 /* hero: the estimate sheet is the one memorable element */
@@ -399,3 +399,22 @@ footer .wrap{display:flex;justify-content:space-between;align-items:center;flex-
   #contactForm{padding:22px 18px}
   .chat-input .field{max-height:200px;overflow:auto}
 }
+
+/* products: home section, /products/ page, footer links */
+.prods{margin-top:72px}
+.prods h3{font-size:1.4rem}
+.prod-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:16px;margin:24px 0}
+.prod{display:flex;gap:16px;align-items:flex-start;padding:22px;background:var(--white);border:1px solid var(--line);border-radius:10px;text-decoration:none;color:var(--indigo)}
+.prod:hover{border-color:var(--indigo)}
+.prod-ic{flex:none;width:56px;height:56px;border-radius:12px;overflow:hidden;display:grid;place-items:center;background:var(--yellow);font-family:var(--display);font-weight:800;font-size:1.6rem}
+.prod-ic img{width:100%;height:100%;object-fit:cover;display:block;background:var(--white)}
+.prod-b{display:flex;flex-direction:column;gap:6px;min-width:0}
+.prod-n{font-family:var(--display);font-weight:800;font-size:1.2rem}
+.prod-st{font-style:normal;font-family:var(--body);font-size:.72rem;font-weight:700;background:var(--yellow-soft);border:1px solid var(--yellow);border-radius:4px;padding:1px 8px;margin-left:6px;vertical-align:middle}
+.prod-t{color:var(--indigo-2);font-size:.92rem}
+.prod-more{font-weight:700;font-size:.88rem;text-decoration:underline;text-decoration-color:var(--yellow);text-decoration-thickness:2px;text-underline-offset:4px}
+.page-title{font-size:clamp(1.8rem,3.4vw,2.4rem);margin-bottom:8px}
+.ft-prods{display:flex;gap:14px;flex-wrap:wrap;align-items:center}
+.ft-prods span{color:#C9CEE3}
+.ft-prods a{color:var(--white)}
+@media (max-width:700px){.prods{margin-top:48px}.prod-grid{grid-template-columns:1fr}.prod{padding:18px}}
