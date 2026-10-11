@@ -1,17 +1,19 @@
 {
-  "_comment": "Product list for the home page section, /products/ and the footer. Add a product = add an entry here (and its pages under products/<id>/ if hosted on this site).",
+  "_comment": "Product list for the home page section, /products/ and the footer. Add a product = add an entry here with group \"partner\" (co-developed) or \"own\" (and its pages under products/<id>/ if hosted on this site).",
   "products": [
     {
       "id": "munemo",
       "name": "Munemo",
       "icon": null,
-      "href": { "ja": "/#munemo", "en": "/en/#munemo" },
+      "group": "partner",
+      "href": { "ja": "/munemo/", "en": "/en/munemo/" },
       "tagline": { "ja": "長い文章を、要約と次のアクションに。商談メモや議事録から要点を数行にまとめます。", "en": "Turns long text into a summary and next steps, from sales notes to meeting minutes." }
     },
     {
       "id": "tsunagu",
       "name": "Tsunagu",
       "icon": "/tsunagu/icon-128.png",
+      "group": "own",
       "href": { "ja": "/tsunagu/", "en": "/tsunagu/" },
       "status": { "ja": "Google審査中", "en": "In Google review" },
       "tagline": { "ja": "名刺の読み取り、インボイス登録番号の確認、入金消込、表記ゆれの整形を Google スプレッドシートで。", "en": "Business card scanning, invoice number checks, payment matching and data cleanup in Google Sheets (page in Japanese)." }

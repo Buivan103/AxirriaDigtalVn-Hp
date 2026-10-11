@@ -17,7 +17,6 @@
     <ul class="menu" id="siteMenu">
       <li><a href="#services" data-i18n="nav.services"></a></li>
       <li><a href="#products" data-i18n="nav.products"></a></li>
-      <li><a href="#munemo" data-i18n="nav.munemo"></a></li>
       <li><a href="#offshore" data-i18n="nav.offshore"></a></li>
       <li><a href="#cases" data-i18n="nav.cases"></a></li>
       <li><a href="#company" data-i18n="nav.company"></a></li>
@@ -67,50 +66,8 @@
       <div class="prods" id="products">
         <h3 data-i18n="pr.title"></h3>
         <p class="sub" data-i18n="pr.lead"></p>
-        <div class="prod-grid">{{productCards}}</div>
+        {{productCards}}
         <a class="textlink" href="{{productsHref}}" data-i18n="pr.all"></a>
-      </div>
-    </div>
-  </section>
-
-  <section id="munemo" class="block tint">
-    <div class="wrap">
-      <div class="mu">
-        <div>
-          <h2 data-i18n="mu.title"></h2>
-          <p class="sub" data-i18n="mu.lead"></p>
-          <ul data-i18n="mu.l"></ul>
-          <div class="mu-cta">
-            <a class="btn" href="#contact" data-i18n="mu.cta"></a>
-            <a class="btn btn-line" href="{{cfg.munemoUrl}}" target="_blank" rel="noopener" data-i18n="mu.more"></a>
-          </div>
-        </div>
-        <div class="chat">
-          <div class="chat-head"><span class="av ai">M</span><strong>Munemo<small data-i18n="mu.hint"></small></strong></div>
-          <div class="chat-body" aria-live="polite">
-            <div class="msg" id="chatEmpty"><span class="av ai">M</span><div class="bubble" data-i18n="mu.empty"></div></div>
-            <div class="msg me in" id="askMsg" hidden><div class="bubble long"><div class="clamp" data-i18n="mu.text"></div><small data-i18n="mu.len"></small></div></div>
-            <div class="msg in" id="thinkMsg" hidden><span class="av ai">M</span><div class="thinking" data-i18n="mu.thinking"></div></div>
-            <div class="msg in" id="sumMsg" hidden><span class="av ai">M</span>
-              <div class="sumwrap">
-                <div class="sumcard" data-i18n="mu.sum"></div>
-                <div class="acts-row">
-                  <button class="act" type="button" data-i18n="mu.slack" data-done="mu.slackDone"></button>
-                  <button class="act" type="button" data-i18n="mu.jira" data-done="mu.jiraDone"></button>
-                  <button class="act" type="button" data-i18n="mu.mail" data-done="mu.mailDone"></button>
-                </div>
-                <p class="demo-note" data-i18n="mu.note"></p>
-              </div>
-            </div>
-          </div>
-          <div class="chat-input" id="chatInput">
-            <textarea class="field" id="muInput" rows="8" readonly data-i18n="mu.text" data-i18n-label="mu.inputLabel"></textarea>
-            <div class="try">
-              <p data-i18n="mu.tryHint"></p>
-              <button class="btn try-btn" type="button" id="sumBtn" data-i18n="mu.run"></button>
-            </div>
-          </div>
-        </div>
       </div>
     </div>
   </section>
