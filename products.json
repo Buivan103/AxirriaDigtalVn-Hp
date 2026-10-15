@@ -15,7 +15,6 @@
       "icon": "/tsunagu/icon-128.png",
       "group": "own",
       "href": { "ja": "/tsunagu/", "en": "/tsunagu/" },
-      "status": { "ja": "Google審査中", "en": "In Google review" },
       "tagline": { "ja": "名刺の読み取り、インボイス登録番号の確認、入金消込、表記ゆれの整形を Google スプレッドシートで。", "en": "Business card scanning, invoice number checks, payment matching and data cleanup in Google Sheets (page in Japanese)." }
     }
   ]
