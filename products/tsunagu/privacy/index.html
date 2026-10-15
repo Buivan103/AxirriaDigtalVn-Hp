@@ -78,6 +78,7 @@
 <table>
 <tr><th style="width:30%">委託先</th><th>委託する内容</th></tr>
 <tr><td>Google LLC（米国）</td><td>サーバーの運用、AI による処理、利用回数の保存（Google Cloud）。AI の処理は日本国外で行われる場合があります。</td></tr>
+<tr><td>Stripe, Inc.（米国）</td><td>有料プランの決済処理。クレジットカード情報・メールアドレス等は利用者が Stripe の決済画面に直接入力し、運営者は受け取りません。Stripe での取扱いは <a href="https://stripe.com/jp/privacy" target="_blank" rel="noopener">Stripe のプライバシーポリシー</a>に従います。</td></tr>
 <tr><td>AXIRRIA DIGITAL VIETNAM LIMITED COMPANY（ベトナム）</td><td>本アプリの開発・保守。障害の調査やお問い合わせへの対応のため、技術ログおよびお問い合わせの内容を取り扱う場合があります。</td></tr>
 </table>
 <p>運営者は、契約および各社の規約（Google Cloud の Cloud Data Processing Addendum 等）により、委託先での適切な取扱いを確保しています。米国・ベトナムの個人情報保護制度は、個人情報保護委員会の<a href="https://www.ppc.go.jp/personalinfo/legal/kaiseihogohou/#gaikoku" target="_blank" rel="noopener">外国における個人情報の保護に関する制度等の調査</a>をご参照ください。</p>
@@ -116,6 +117,7 @@
 <tr><td>スプレッドシートの内容</td><td>開いているシートだけを、機能に必要な範囲で読み書きします。インボイス確認・入金消込・データ整形はアドオン内で処理します（国税庁サイトでの確認時は登録番号のみ送信）。</td><td>保存しません</td></tr>
 <tr><td>メールアドレス</td><td>アドオン内で不可逆な識別子（SHA-256）に変換し、識別子だけを送信します。メールアドレスそのものは受け取りません。</td><td>識別子のみ</td></tr>
 <tr><td>利用回数</td><td>識別子ごと・月ごとの読み取り枚数（Firestore、東京リージョン）。</td><td>約12か月で自動削除</td></tr>
+<tr><td>有料プランの契約情報</td><td>Stripe から通知される契約番号・プラン・有効期限を、識別子と紐づけて記録します（Firestore、東京リージョン）。氏名・メールアドレス・カード情報は受け取りません。</td><td>契約終了後、原則12か月以内に削除</td></tr>
 <tr><td>お問い合わせ</td><td>［ご意見・不具合を送る］の内容（本文、任意のメールアドレス、画面名、バージョン、識別子）。</td><td>対応完了後、原則2年以内に削除</td></tr>
 <tr><td>技術ログ</td><td>処理時間、エラーの種類、AI の処理量など。名刺やシートの内容は含みません。</td><td>原則30日</td></tr>
 </table>
